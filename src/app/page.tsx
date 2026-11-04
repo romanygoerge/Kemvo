@@ -8,6 +8,7 @@ import PortfolioSection from "@/components/PortfolioSection";
 import TechStackSection from "@/components/TechStackSection";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ShowreelModal from "@/components/ShowreelModal";
@@ -42,13 +43,16 @@ export default function Home() {
       {/* 4-Step Engineering Process */}
       <ProcessSection />
 
+      {/* Frequently Asked Questions (SEO & High-Intent CRO) */}
+      <FAQSection />
+
       {/* Editorial Testimonials */}
       <TestimonialsSection />
 
       {/* Contact & Consultation Booking Form */}
       <ContactSection />
 
-      {/* Minimalist Footer */}
+      {/* Minimalist Footer with Rich Internal Links */}
       <Footer />
 
       {/* Showreel Interactive Modal */}

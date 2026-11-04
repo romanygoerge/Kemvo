@@ -25,11 +25,11 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: t.services, href: "#services" },
-    { name: t.portfolio, href: "#portfolio" },
-    { name: t.process, href: "#process" },
-    { name: t.stack, href: "#stack" },
-    { name: t.reviews, href: "#reviews" },
+    { name: t.services, href: "/#services" },
+    { name: t.portfolio, href: "/#portfolio" },
+    { name: t.process, href: "/#process" },
+    { name: lang === "ar" ? "الأسئلة الشائعة" : "FAQs", href: "/#faq" },
+    { name: t.reviews, href: "/#reviews" },
   ];
 
   return (
@@ -40,10 +40,12 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
     >
       <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1520px] mx-auto glass-nav rounded-2xl md:rounded-full border border-slate-200/80 shadow-subtle px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between transition-all">
         {/* Brand Logo */}
-        <Link href="#" className="flex items-center gap-2 sm:gap-3 group focus:outline-none shrink-0">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 group focus:outline-none shrink-0" aria-label="Kemvo Studio Home">
           <img
             src="/images/logo.png"
-            alt="Kemvo Studio"
+            alt="Kemvo Studio | استوديو تصميم وتطوير التطبيقات والمواقع"
+            width={120}
+            height={40}
             className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
           />
 

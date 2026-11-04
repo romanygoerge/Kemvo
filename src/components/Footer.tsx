@@ -80,35 +80,41 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Col 1 */}
+          {/* Links Col 1: Dedicated Services Landing Pages */}
           <div className="sm:col-span-1 md:col-span-2 flex flex-col gap-2.5 sm:gap-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">
               {t.servicesTitle}
             </h4>
-            <a
-              href="#services"
-              className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
-            >
-              {lang === "ar" ? "تصميم واجهات UI/UX" : "UI/UX Design"}
-            </a>
-            <a
-              href="#services"
+            <Link
+              href="/services/mobile-app-development"
               className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
             >
               {lang === "ar" ? "تطوير تطبيقات الجوال" : "Mobile App Dev"}
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              href="/services/flutter-app-development"
+              className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
+            >
+              {lang === "ar" ? "تطبيقات Flutter الموحدة" : "Flutter Apps"}
+            </Link>
+            <Link
+              href="/services/web-development"
               className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
             >
               {lang === "ar" ? "المواقع ومنصات الويب" : "Web Platforms"}
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              href="/services/ui-ux-design"
               className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
             >
-              {lang === "ar" ? "أنظمة التصميم (Design Systems)" : "Design Systems"}
-            </a>
+              {lang === "ar" ? "تصميم واجهات UI/UX" : "UI/UX Design"}
+            </Link>
+            <Link
+              href="/services/custom-software-development"
+              className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
+            >
+              {lang === "ar" ? "برمجيات الشركات المخصصة" : "Custom Software"}
+            </Link>
           </div>
 
           {/* Links Col 2 */}
@@ -117,28 +123,34 @@ export default function Footer() {
               {t.studioTitle}
             </h4>
             <a
-              href="#portfolio"
+              href="/#portfolio"
               className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
             >
               {navT.portfolio}
             </a>
             <a
-              href="#process"
+              href="/#process"
               className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
             >
               {navT.process}
             </a>
             <a
-              href="#reviews"
+              href="/#faq"
+              className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
+            >
+              {lang === "ar" ? "الأسئلة الشائعة" : "Knowledge & FAQs"}
+            </a>
+            <a
+              href="/#reviews"
               className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
             >
               {navT.reviews}
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className="text-xs sm:text-sm text-[#525B75] hover:text-[#1366FF] transition-colors"
             >
-              {lang === "ar" ? "حجز استشارة عبر واتساب" : "Book via WhatsApp"}
+              {lang === "ar" ? "حجز استشارة وعرض سعر" : "Free Consultation"}
             </a>
           </div>
 
