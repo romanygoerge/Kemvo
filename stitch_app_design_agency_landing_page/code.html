@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kemvo Studio | استوديو تصميم وتطوير التطبيقات الرقمية العالمية</title>
+<!-- Fonts: Plus Jakarta Sans & IBM Plex Sans Arabic for pristine Apple/Google typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#eff6ff",
+              100: "#dbeafe",
+              200: "#bfdbfe",
+              400: "#38bdf8",
+              500: "#1366ff",
+              600: "#0052e0",
+              700: "#0041b3",
+              900: "#0b192c",
+            },
+            surface: {
+              canvas: "#FAFCFF",
+              card: "#FFFFFF",
+              subtle: "#F1F5F9",
+              border: "rgba(226, 232, 240, 0.8)",
+            },
+            textPrimary: "#090D1A",
+            textSecondary: "#525B75",
+            textTertiary: "#94A3B8"
+          },
+          fontFamily: {
+            sans: ['"IBM Plex Sans Arabic"', '"Plus Jakarta Sans"', 'sans-serif'],
+            en: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            'subtle': '0 1px 3px rgba(0,0,0,0.03), 0 6px 16px rgba(19, 102, 255, 0.04)',
+            'apple': '0 20px 60px -15px rgba(15, 23, 42, 0.08), 0 0 1px rgba(0,0,0,0.06)',
+            'glow': '0 0 45px -5px rgba(19, 102, 255, 0.25)',
+            'glow-sm': '0 0 25px -4px rgba(19, 102, 255, 0.20)',
+            'floating': '0 30px 80px -20px rgba(19, 102, 255, 0.18), 0 2px 10px rgba(0,0,0,0.03)'
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+      background-color: #FAFCFF;
+      color: #090D1A;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    
+    /* Apple-like mesh glow gradients */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(19, 102, 255, 0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+  </style>
+</head>
+<body class="selection:bg-brand-500 selection:text-white">
+<!-- =============================== -->
+<!-- 1. FLOATING NAVIGATION BAR     -->
+<!-- =============================== -->
+<header class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 px-4 md:px-8 pt-4">
+<div class="max-w-7xl mx-auto glass-nav rounded-2xl md:rounded-full border border-slate-200/70 shadow-subtle px-4 sm:px-6 h-16 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group focus:outline-none" href="#">
+<img alt="Kemvo Studio" class="h-9 w-auto object-contain transition-transform group-hover:scale-105 duration-200" src="logo.png"/>
+<div class="hidden sm:flex items-center gap-1.5 border-r border-slate-200 pr-3 mr-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-xs text-textSecondary font-medium tracking-tight">نستقبل مشاريع جديدة</span>
+</div>
+</a>
+<!-- Desktop Nav Items -->
+<nav class="hidden md:flex items-center gap-1 lg:gap-2">
+<a class="px-3.5 py-2 text-sm font-medium text-textSecondary hover:text-brand-600 hover:bg-slate-100/70 rounded-full transition-all" href="#services">خدماتنا</a>
+<a class="px-3.5 py-2 text-sm font-medium text-textSecondary hover:text-brand-600 hover:bg-slate-100/70 rounded-full transition-all" href="#portfolio">أعمالنا</a>
+<a class="px-3.5 py-2 text-sm font-medium text-textSecondary hover:text-brand-600 hover:bg-slate-100/70 rounded-full transition-all" href="#process">منهجيتنا</a>
+<a class="px-3.5 py-2 text-sm font-medium text-textSecondary hover:text-brand-600 hover:bg-slate-100/70 rounded-full transition-all" href="#stack">التقنيات</a>
+<a class="px-3.5 py-2 text-sm font-medium text-textSecondary hover:text-brand-600 hover:bg-slate-100/70 rounded-full transition-all" href="#reviews">الآراء</a>
+</nav>
+<!-- Action & Language CTA -->
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex items-center bg-slate-100/80 p-0.5 rounded-full text-xs font-semibold">
+<span class="px-2.5 py-1 rounded-full bg-white text-brand-600 shadow-xs">العربية</span>
+<span class="px-2 py-1 text-slate-400 hover:text-slate-700 cursor-pointer">EN</span>
+</div>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-medium text-sm transition-all duration-200 shadow-glow-sm hover:shadow-glow active:scale-95" href="#contact">
+<span>ابدأ مشروعك</span>
+<span class="material-symbols-outlined text-[17px] transform -scale-x-100">arrow_forward</span>
+</a>
+</div>
+</div>
+</header>
+<!-- =============================== -->
+<!-- 2. HERO SECTION                 -->
+<!-- =============================== -->
+<section class="relative pt-36 md:pt-44 pb-20 md:pb-28 overflow-hidden bg-grid-pattern">
+<!-- Ambient Light Bloom -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-gradient-to-tr from-brand-500/15 via-blue-300/10 to-transparent rounded-full blur-[130px] pointer-events-none -z-10"></div>
+<div class="absolute top-12 left-10 w-96 h-96 bg-brand-400/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Hero Top Textual Stack -->
+<div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+<!-- Floating Pill Badge -->
+<div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 border border-slate-200/80 shadow-subtle mb-6 animate-fade-in backdrop-blur-md">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+</span>
+<span class="text-xs md:text-sm font-semibold text-textPrimary tracking-tight">استوديو هندسة وتصميم المنتجات الرقمية العالمية</span>
+<span class="text-xs px-2 py-0.5 rounded-md bg-brand-50 text-brand-600 font-bold border border-brand-100 font-en">iOS &amp; Web</span>
+</div>
+<!-- Master Title -->
+<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold text-textPrimary tracking-tight leading-[1.18] sm:leading-[1.15] mb-6">
+          نصمّم تطبيقات تُعيد تعريف <br class="hidden sm:inline"/>
+<span class="bg-gradient-to-r from-brand-700 via-brand-500 to-sky-400 bg-clip-text text-transparent">تجربة المستخدم</span> وتصنع الفارق الحقيقي.
+        </h1>
+<!-- Editorial Subtitle -->
+<p class="text-lg md:text-xl text-textSecondary max-w-2xl font-normal leading-relaxed mb-10">
+          استوديو نخبوي يمزج بين دقة واجهات Apple وتطور منظومة الويب الحديثة بـ Next.js و Swift و Framer Motion لبناء منتجات رقمية رشيقة تلهم الملايين وتنمو بسرعة.
+        </p>
+<!-- CTA Buttons Group -->
+<div class="flex flex-wrap items-center justify-center gap-4 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold text-base transition-all duration-300 shadow-glow-sm hover:shadow-glow transform hover:-translate-y-0.5" href="#contact">
+<span>احجز موعد استشارة استراتيجية</span>
+<span class="material-symbols-outlined text-lg transform -scale-x-100">arrow_forward</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-textPrimary font-semibold text-base border border-slate-200/90 shadow-subtle transition-all duration-200" href="#showreel">
+<span class="w-6 h-6 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+<span>شاهد شووريل الاستوديو</span>
+</a>
+</div>
+<!-- Micro stats -->
+<div class="mt-12 pt-8 border-t border-slate-200/60 w-full max-w-2xl grid grid-cols-3 gap-4 text-center">
+<div>
+<div class="text-2xl md:text-3xl font-bold text-textPrimary font-en">+120</div>
+<div class="text-xs md:text-sm text-textSecondary mt-0.5 font-medium">تطبيق ومنصة تم إطلاقها</div>
+</div>
+<div>
+<div class="text-2xl md:text-3xl font-bold text-brand-600 font-en">4.9 / 5.0</div>
+<div class="text-xs md:text-sm text-textSecondary mt-0.5 font-medium">متوسط تقييم العملاء</div>
+</div>
+<div>
+<div class="text-2xl md:text-3xl font-bold text-textPrimary font-en">+45M</div>
+<div class="text-xs md:text-sm text-textSecondary mt-0.5 font-medium">مستخدم متفاعل شهرياً</div>
+</div>
+</div>
+</div>
+<!-- =============================== -->
+<!-- KEYNOTE HERO MOCKUP SHOWCASE    -->
+<!-- =============================== -->
+<div class="relative mt-16 md:mt-20 max-w-5xl mx-auto">
+<!-- Floating Interactive Glass Cards -->
+<!-- Left Floating Card: Performance Metric -->
+<div class="hidden lg:flex absolute -left-12 top-24 z-30 glass-card p-4 rounded-2xl border border-white/80 shadow-apple flex-col gap-2 max-w-xs animate-bounce" style="animation-duration: 6s;">
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-xl">bolt</span>
+</div>
+<div>
+<div class="text-xs font-bold text-textPrimary">أداء 60 إطار / ثانية</div>
+<div class="text-[11px] text-textSecondary font-en">Zero Frame Drops</div>
+</div>
+</div>
+<span class="text-xs font-bold text-emerald-600 font-en">99.8%</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[98%] rounded-full"></div>
+</div>
+</div>
+<!-- Right Floating Card: Growth Indicator -->
+<div class="hidden lg:flex absolute -right-12 bottom-20 z-30 glass-card p-4 rounded-2xl border border-white/80 shadow-apple flex-col gap-2 max-w-xs animate-bounce" style="animation-duration: 7s;">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">trending_up</span>
+</div>
+<div>
+<div class="text-xs text-textSecondary">معدل التحويل المحقق</div>
+<div class="text-base font-bold text-textPrimary font-en">+340% <span class="text-[11px] text-emerald-600 font-normal">بعد إعادة التصميم</span></div>
+</div>
+</div>
+</div>
+<!-- Center Phone & Tablet Stage Frame -->
+<div class="relative mx-auto rounded-3xl md:rounded-[40px] bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 p-2 md:p-3 shadow-floating border border-slate-800/80">
+<!-- Inner App Canvas Screen -->
+<div class="rounded-2xl md:rounded-[32px] bg-white overflow-hidden border border-slate-200/30">
+<!-- Simulated Browser / Desktop Window Bar -->
+<div class="bg-slate-100/90 px-4 py-3 flex items-center justify-between border-b border-slate-200/80">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-rose-400"></span>
+<span class="w-3 h-3 rounded-full bg-amber-400"></span>
+<span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+</div>
+<div class="bg-white px-6 py-1 rounded-full text-xs text-slate-500 font-en font-medium border border-slate-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-[13px] text-slate-400">lock</span>
+<span>kemvo.studio/design-system-preview</span>
+</div>
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-sm">share</span>
+<span class="material-symbols-outlined text-sm">view_in_ar</span>
+</div>
+</div>
+<!-- Content Area: Dual Mockup Split -->
+<div class="p-6 md:p-10 bg-gradient-to-b from-slate-50/70 to-white grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<!-- Left Column: Interactive Mobile Frame -->
+<div class="md:col-span-5 flex justify-center">
+<div class="w-full max-w-[280px] bg-slate-950 rounded-[42px] p-2.5 shadow-2xl border-[3px] border-slate-700">
+<!-- iPhone Island -->
+<div class="relative bg-white rounded-[34px] overflow-hidden p-3.5 flex flex-col gap-3">
+<div class="w-24 h-4 bg-slate-950 mx-auto rounded-full mb-1"></div>
+<!-- Wallet Mini App Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-brand-500 text-white flex items-center justify-center font-bold text-xs">K</div>
+<span class="text-xs font-bold text-textPrimary">محفظة كيمفو</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">notifications</span>
+</div>
+<!-- Sleek Gradient Card inside Phone -->
+<div class="p-4 rounded-2xl bg-gradient-to-br from-brand-600 to-brand-500 text-white shadow-md flex flex-col gap-2">
+<div class="flex justify-between items-center text-[10px] text-blue-100 font-en">
+<span>Apple Pay Certified</span>
+<span class="font-bold">VISA Platinum</span>
+</div>
+<div class="text-lg font-bold font-en">84,920.00 <span class="text-xs font-sans">ر.س</span></div>
+<div class="flex justify-between items-center text-[10px] text-blue-100 pt-1">
+<span>سعود بن فهد</span>
+<span class="font-en">•••• 8821</span>
+</div>
+</div>
+<!-- Micro Sparkline -->
+<div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col gap-1">
+<div class="flex justify-between items-center text-[11px]">
+<span class="font-medium text-textSecondary">نمو الإيرادات</span>
+<span class="font-bold text-emerald-600 font-en">+32.4%</span>
+</div>
+<div class="h-6 w-full flex items-end gap-1 pt-1">
+<span class="bg-blue-200 w-1/6 h-2 rounded-sm"></span>
+<span class="bg-blue-300 w-1/6 h-3.5 rounded-sm"></span>
+<span class="bg-blue-400 w-1/6 h-4.5 rounded-sm"></span>
+<span class="bg-brand-500 w-1/6 h-6 rounded-sm"></span>
+<span class="bg-brand-600 w-1/6 h-5 rounded-sm"></span>
+<span class="bg-brand-700 w-1/6 h-6 rounded-sm"></span>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+<div class="grid grid-cols-3 gap-1.5 pt-1">
+<div class="p-2 rounded-xl bg-slate-100 flex flex-col items-center gap-1 text-[10px] font-medium text-slate-700">
+<span class="material-symbols-outlined text-sm text-brand-600">send</span>
+<span>تحويل</span>
+</div>
+<div class="p-2 rounded-xl bg-slate-100 flex flex-col items-center gap-1 text-[10px] font-medium text-slate-700">
+<span class="material-symbols-outlined text-sm text-brand-600">qr_code_scanner</span>
+<span>دفع سريع</span>
+</div>
+<div class="p-2 rounded-xl bg-slate-100 flex flex-col items-center gap-1 text-[10px] font-medium text-slate-700">
+<span class="material-symbols-outlined text-sm text-brand-600">pie_chart</span>
+<span>التحليلات</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Design Tokens & Architecture Blueprint -->
+<div class="md:col-span-7 flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 text-xs font-bold text-brand-600 bg-brand-50 px-3 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span>معايير هندسية متطابقة مع Apple HIG</span>
+</div>
+<h3 class="text-2xl font-bold text-textPrimary leading-snug">
+                  نظام تصميم معياري يدعم قابلية التوسع من اليوم الأول.
+                </h3>
+<p class="text-sm text-textSecondary leading-relaxed">
+                  لا نقوم فقط برسم شاشات جميلة؛ نحن ننشئ Design Tokens مجهزة بالكود ومكتبات مكونات تفاعلية تقلل وقت التطوير بنسبة 60% وتمنح تطبيقك طابع الشركات التقنية الكبرى.
+                </p>
+<!-- Token Pills -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
+<div class="p-2.5 rounded-xl border border-slate-200/80 bg-white flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-brand-500"></span>
+<span class="text-xs font-semibold text-slate-800">Primary #1366FF</span>
+</div>
+<div class="p-2.5 rounded-xl border border-slate-200/80 bg-white flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-slate-900"></span>
+<span class="text-xs font-semibold text-slate-800">Dark #0B192C</span>
+</div>
+<div class="p-2.5 rounded-xl border border-slate-200/80 bg-white flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-semibold text-slate-800">Success #10B981</span>
+</div>
+<div class="p-2.5 rounded-xl border border-slate-200/80 bg-white flex items-center gap-2 font-en">
+<span class="material-symbols-outlined text-brand-600 text-sm">speed</span>
+<span class="text-xs font-semibold text-slate-800">120 FPS Ready</span>
+</div>
+<div class="p-2.5 rounded-xl border border-slate-200/80 bg-white flex items-center gap-2">
+<span class="material-symbols-outlined text-brand-600 text-sm">auto_stories</span>
+<span class="text-xs font-semibold text-slate-800">مكتبة Figma UI</span>
+</div>
+<div class="p-2.5 rounded-xl border border-slate-200/80 bg-white flex items-center gap-2 font-en">
+<span class="material-symbols-outlined text-brand-600 text-sm">devices</span>
+<span class="text-xs font-semibold text-slate-800">iOS &amp; Android</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================== -->
+<!-- 3. TRUSTED BY / SOCIAL PROOF   -->
+<!-- =============================== -->
+<section class="py-12 border-y border-slate-200/60 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<p class="text-center text-xs md:text-sm font-semibold text-textTertiary uppercase tracking-wider mb-8">
+        تعتمد علينا نخبة الشركات التقنية الناشئة والمؤسسات المتسارعة
+      </p>
+<div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 font-en">
+<span class="material-symbols-outlined text-brand-500">account_balance</span>
+<span>FinNova.io</span>
+</div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 font-en">
+<span class="material-symbols-outlined text-brand-500">local_shipping</span>
+<span>FastTrack Logistics</span>
+</div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 font-en">
+<span class="material-symbols-outlined text-brand-500">health_and_safety</span>
+<span>SalamatTech</span>
+</div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 font-en">
+<span class="material-symbols-outlined text-brand-500">cloud</span>
+<span>CloudScale</span>
+</div>
+<div class="flex items-center gap-2 text-xl font-bold text-slate-800 font-en">
+<span class="material-symbols-outlined text-brand-500">token</span>
+<span>AuraPay</span>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================== -->
+<!-- 4. SERVICES BENTO GRID          -->
+<!-- =============================== -->
+<section class="py-24 md:py-32 relative bg-surface-canvas" id="services">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Title & Narrative -->
+<div class="max-w-3xl mb-16">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-50 text-brand-600 text-xs font-bold mb-3">
+<span>قدراتنا الهندسية والتصميمية</span>
+</div>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-textPrimary tracking-tight leading-tight">
+          حلول متكاملة لبناء تطبيقات رائدة تنافس عالمياً.
+        </h2>
+<p class="text-textSecondary text-base md:text-lg mt-4 leading-relaxed">
+          نوفّر مساراً تقنياً وتصميمياً رفيع المستوى يغطي كافة تفاصيل المنتج من أول سكتش وحتى إطلاقه في المتاجر وإدارته.
+        </p>
+</div>
+<!-- Bento Grid (Apple-style uneven responsive tiles) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Bento 1: Large Featured Card (Mobile UI/UX) -->
+<div class="md:col-span-2 glass-card rounded-3xl p-8 md:p-10 border border-slate-200/80 shadow-subtle hover:shadow-apple transition-all duration-300 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">phone_iphone</span>
+</div>
+<div class="flex items-center gap-2 text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2 font-en">
+<span>Mobile Experience</span>
+<span>• iOS HIG &amp; Material 3</span>
+</div>
+<h3 class="text-2xl md:text-3xl font-bold text-textPrimary mb-4">
+              تصميم واجهات وتجربة المستخدم (UI/UX) الاستثنائية
+            </h3>
+<p class="text-textSecondary leading-relaxed max-w-xl text-base">
+              هندسة تدفقات استخدام مريحة تخاطب المشاعر وتجعل التفاعل بديهياً بلا أي تعقيد. نعتمد أعلى معايير أبل للتصميم التفاعلي، الإيماءات الدقيقة، وحالات الاستخدام المعقدة.
+            </p>
+</div>
+<!-- Micro Visual Preview inside card -->
+<div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-xs font-medium text-slate-700">Figma Tokens</span>
+<span class="px-3 py-1 rounded-full bg-slate-100 text-xs font-medium text-slate-700">Interactive Prototyping</span>
+<span class="px-3 py-1 rounded-full bg-slate-100 text-xs font-medium text-slate-700">Micro-animations</span>
+</div>
+<span class="text-brand-600 font-semibold text-sm flex items-center gap-1 group-hover:-translate-x-1 transition-transform">
+<span>استكشف المزيد</span>
+<span class="material-symbols-outlined text-sm transform -scale-x-100">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Bento 2: Mobile Engineering (React Native / Flutter / Swift) -->
+<div class="glass-card rounded-3xl p-8 border border-slate-200/80 shadow-subtle hover:shadow-apple transition-all duration-300 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+</div>
+<div class="text-xs font-semibold text-sky-600 uppercase tracking-wider mb-2 font-en">Native &amp; Cross Platform</div>
+<h3 class="text-xl font-bold text-textPrimary mb-3">
+              تطوير تطبيقات الجوال عالية السرعة
+            </h3>
+<p class="text-textSecondary text-sm leading-relaxed">
+              كتابة كود نظيف ومعماري باستخدام Flutter و Swift بنية تحتية مقاومة للانهيار تدعم الملايين وتوفر تجربة 60 إطاراً في الثانية.
+            </p>
+</div>
+<div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-textTertiary font-en">
+<span>Flutter • Swift • Offline First</span>
+<span class="material-symbols-outlined text-brand-600 text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</div>
+</div>
+<!-- Bento 3: Modern Web & Next.js -->
+<div class="glass-card rounded-3xl p-8 border border-slate-200/80 shadow-subtle hover:shadow-apple transition-all duration-300 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">web</span>
+</div>
+<div class="text-xs font-semibold text-indigo-600 uppercase tracking-wider mb-2 font-en">Web Apps &amp; Next.js 15</div>
+<h3 class="text-xl font-bold text-textPrimary mb-3">
+              منصات الويب ولوحات التحكم الإدارية
+            </h3>
+<p class="text-textSecondary text-sm leading-relaxed">
+              تطبيقات ويب فائقة السرعة مع Next.js App Router و Tailwind CSS و TypeScript مع أفضل مؤشرات سرعة Core Web Vitals.
+            </p>
+</div>
+<div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-textTertiary font-en">
+<span>Next.js • Tailwind • SSR</span>
+<span class="material-symbols-outlined text-brand-600 text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</div>
+</div>
+<!-- Bento 4: Wide Card: Design Systems & Enterprise Foundations -->
+<div class="md:col-span-2 glass-card rounded-3xl p-8 md:p-10 border border-slate-200/80 shadow-subtle hover:shadow-apple transition-all duration-300 flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-violet-50 text-violet-600 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">layers</span>
+</div>
+<div class="flex items-center gap-2 text-xs font-semibold text-violet-600 uppercase tracking-wider mb-2 font-en">
+<span>Token Architecture</span>
+<span>• Scalable Systems</span>
+</div>
+<h3 class="text-2xl font-bold text-textPrimary mb-3">
+              أنظمة التصميم الشاملة (Design Systems)
+            </h3>
+<p class="text-textSecondary text-base leading-relaxed max-w-xl">
+              نوحّد لغة التصميم لشركتك من خلال مكتبات عناصر ومكونات مركزية قابلة لإعادة الاستخدام في Figma و React، مما يمنع التشتت ويختصر وقت بناء الميزات الجديدة.
+            </p>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+<div class="flex gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-xs font-medium text-slate-700">Design Tokens</span>
+<span class="px-3 py-1 rounded-full bg-slate-100 text-xs font-medium text-slate-700">Storybook</span>
+<span class="px-3 py-1 rounded-full bg-slate-100 text-xs font-medium text-slate-700">Accessibility (a11y)</span>
+</div>
+<span class="text-brand-600 font-semibold text-sm flex items-center gap-1 group-hover:-translate-x-1 transition-transform">
+<span>تعرف على منهجية الأنظمة</span>
+<span class="material-symbols-outlined text-sm transform -scale-x-100">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================== -->
+<!-- 5. FEATURED CASE STUDIES        -->
+<!-- =============================== -->
+<section class="py-24 md:py-32 bg-white relative" id="portfolio">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<span class="text-xs font-bold text-brand-600 bg-brand-50 px-3 py-1 rounded-md mb-2 inline-block">أعمال مختارة</span>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-textPrimary tracking-tight">
+            قصص نجاح صممناها من الفكرة حتى القمة
+          </h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm font-semibold text-textSecondary">تصنيف الأعمال:</span>
+<div class="inline-flex p-1 bg-slate-100 rounded-full text-xs font-semibold">
+<button class="px-3 py-1 rounded-full bg-white text-brand-600 shadow-xs">الكل</button>
+<button class="px-3 py-1 rounded-full text-textSecondary hover:text-textPrimary">فنتك</button>
+<button class="px-3 py-1 rounded-full text-textSecondary hover:text-textPrimary">لوجستيات</button>
+<button class="px-3 py-1 rounded-full text-textSecondary hover:text-textPrimary">صحة</button>
+</div>
+</div>
+</div>
+<!-- Portfolio Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Case 1: FinTech App -->
+<div class="rounded-3xl border border-slate-200/80 bg-surface-canvas overflow-hidden hover:shadow-apple transition-all duration-300 flex flex-col group">
+<div class="relative h-72 bg-gradient-to-tr from-brand-900 to-brand-600 overflow-hidden">
+<img alt="دراهمك - FinTech" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz5ScpzrIY_nWp9YJsDFLi8cXfAqISBtnn9UyxSaUYBZVqZFI2es17mnPd6k4HYJK7DBVvdwBt8gmnMkEzCbiQBNcwaVpPWc-HhVcaCp0hjgf3OQI3CMnxk3Y1NsG9uP8ZUo85F547dRZk8DPK_A8uxCkmCjDD8_Kd5Y2bcKtXUptRKVed6n1FFUhXzIl52MVSXJzGkvIsDyLfx9VPFVOWaeZL-kxFHYIkQMTeevM"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-600 shadow-xs">
+              Fintech • تقنية مالية
+            </div>
+<div class="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-white font-en">
+              +54% الإيداعات الشهرية
+            </div>
+</div>
+<div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+<div>
+<h3 class="text-xl font-bold text-textPrimary group-hover:text-brand-600 transition-colors">
+                تطبيق «دراهمك» للحلول المالية والاستثمار
+              </h3>
+<p class="text-sm text-textSecondary mt-2 leading-relaxed">
+                إعادة تصميم كاملة لتجربة المستخدم لتطبيق استثماري معتمدة من ساما، أسفرت عن تسريع معدل إتمام التسجيل إلى أقل من دقيقتين.
+              </p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-brand-600">
+<span class="text-textTertiary font-en">Flutter • iOS • Next.js</span>
+<span class="flex items-center gap-1 group-hover:-translate-x-1 transition-transform">
+<span>دراسة الحالة كاملة</span>
+<span class="material-symbols-outlined text-sm transform -scale-x-100">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Case 2: Delivery & Logistics -->
+<div class="rounded-3xl border border-slate-200/80 bg-surface-canvas overflow-hidden hover:shadow-apple transition-all duration-300 flex flex-col group">
+<div class="relative h-72 bg-gradient-to-tr from-cyan-900 to-sky-600 overflow-hidden">
+<img alt="سريع - لوجستيات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrBaLeXrrNByzExBP6D9oBHz63FAeunq88Ttks9KN1Zabv_8vKZNu6uP6gB5a6zzDNXwfnrUxxrYvDnbKbxPIHBnrEhL0xgQtO20FPgg03zUK61U79mZkdHOWG3UKj6rsISR3SRT0vqum9A35rIReBwIlJmpbHVOJBeDmPrrPiTK5C4XysHKi0l1IJ1-je9Llpc4ZR9FINs4HitrVX-bbTJe52JXriEZZVazcsrOs"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-sky-600 shadow-xs">
+              Logistics • التوصيل السريع
+            </div>
+<div class="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-white font-en">
+              30,000+ طلب يومي
+            </div>
+</div>
+<div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+<div>
+<h3 class="text-xl font-bold text-textPrimary group-hover:text-brand-600 transition-colors">
+                منصة «سريع» للخدمات اللوجستية والشحن
+              </h3>
+<p class="text-sm text-textSecondary mt-2 leading-relaxed">
+                منظومة تضم تطبيق السائق، تطبيق العميل، ولوحة تحكم متكاملة تتبع المسارات الحية بدقة GPS فورية وبكفاءة استهلاك طاقة عالية.
+              </p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-brand-600">
+<span class="text-textTertiary font-en">Native Swift • WebSockets</span>
+<span class="flex items-center gap-1 group-hover:-translate-x-1 transition-transform">
+<span>دراسة الحالة كاملة</span>
+<span class="material-symbols-outlined text-sm transform -scale-x-100">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Case 3: HealthTech App -->
+<div class="rounded-3xl border border-slate-200/80 bg-surface-canvas overflow-hidden hover:shadow-apple transition-all duration-300 flex flex-col group">
+<div class="relative h-72 bg-gradient-to-tr from-indigo-900 to-indigo-600 overflow-hidden">
+<img alt="عافيتي - صحة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzwK_dNXY6J1LO-BYzjQhmgrLp7h187_BPjxbVl1VWbgTVAPNY0zEByPy13140KU17JybLyWtiDs9wHfJviksxV2hJdsUwOBLVgqDYGs93Gr8_4siLE8If5ZQDs3U1obyxl_sdSjB5xYP-AsptT_koyiHB1h1qRTc6g-QqWDmQflM_MpevmyWWwca8lEenEJnAQ8asNlsDNdXJ5J-gYJ6NG_FC85WKKhjiGgD_bEE"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-indigo-600 shadow-xs">
+              HealthTech • الاستشارات الطبية
+            </div>
+<div class="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-white font-en">
+              أفضل تطبيق صحي 2024
+            </div>
+</div>
+<div class="p-6 md:p-8 flex flex-col justify-between flex-1">
+<div>
+<h3 class="text-xl font-bold text-textPrimary group-hover:text-brand-600 transition-colors">
+                منصة «عافيتي» للاستشارات والطب الاتصالي
+              </h3>
+<p class="text-sm text-textSecondary mt-2 leading-relaxed">
+                تجربة استشارة طبية متكاملة عبر الفيديو مع تشفير عالي الخصوصية ونظام حجز وجدولة تفاعلي حاز على رضا 98% من المرضى.
+              </p>
+</div>
+<div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-brand-600">
+<span class="text-textTertiary font-en">HIPAA Compliant • WebRTC</span>
+<span class="flex items-center gap-1 group-hover:-translate-x-1 transition-transform">
+<span>دراسة الحالة كاملة</span>
+<span class="material-symbols-outlined text-sm transform -scale-x-100">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================== -->
+<!-- 6. TECH STACK & ARCHITECTURE    -->
+<!-- =============================== -->
+<section class="py-20 bg-slate-900 text-white relative overflow-hidden" id="stack">
+<div class="absolute -top-40 right-1/4 w-96 h-96 bg-brand-500/20 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-brand-400 text-xs font-semibold mb-3">
+<span>هندسة برمجية للمستقبل</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        أحدث حزمة تقنية مبنية للأداء العالي والموثوقية
+      </h2>
+<p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mb-12">
+        نستخدم التقنيات التي تعتمدها الشركات التقنية العالمية مثل Apple و Vercel و Stripe لضمان بقاء تطبيقك سريعاً وآمناً.
+      </p>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+<div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col items-center gap-2 hover:border-brand-500 transition-colors">
+<span class="text-2xl font-bold font-en text-white">Next.js 15</span>
+<span class="text-xs text-slate-400">Web Architecture</span>
+</div>
+<div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col items-center gap-2 hover:border-brand-500 transition-colors">
+<span class="text-2xl font-bold font-en text-white">Swift</span>
+<span class="text-xs text-slate-400">iOS Native Engine</span>
+</div>
+<div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col items-center gap-2 hover:border-brand-500 transition-colors">
+<span class="text-2xl font-bold font-en text-white">Flutter 3</span>
+<span class="text-xs text-slate-400">Multiplatform SDK</span>
+</div>
+<div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col items-center gap-2 hover:border-brand-500 transition-colors">
+<span class="text-2xl font-bold font-en text-white">Tailwind</span>
+<span class="text-xs text-slate-400">Modern CSS System</span>
+</div>
+<div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col items-center gap-2 hover:border-brand-500 transition-colors">
+<span class="text-2xl font-bold font-en text-white">TypeScript</span>
+<span class="text-xs text-slate-400">Strict Type Safety</span>
+</div>
+<div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col items-center gap-2 hover:border-brand-500 transition-colors">
+<span class="text-2xl font-bold font-en text-white">Figma</span>
+<span class="text-xs text-slate-400">Tokens &amp; Auto-Layout</span>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================== -->
+<!-- 7. OUR 4-STEP PROCESS (LINEAR)  -->
+<!-- =============================== -->
+<section class="py-24 md:py-32 bg-surface-canvas relative" id="process">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="text-xs font-bold text-brand-600 bg-brand-50 px-3 py-1 rounded-md mb-2 inline-block">منهجية واضحة ومجربة</span>
+<h2 class="text-3xl sm:text-4xl font-bold text-textPrimary tracking-tight">
+          مسار هندسي منظم من الرؤية إلى الإطلاق
+        </h2>
+<p class="text-textSecondary text-sm md:text-base mt-3">
+          لا مجال للغموض؛ نعمل بدقة مراحل واضحة المعالم مع تسليمات أسبوعية ملموسة.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+<!-- Step 1 -->
+<div class="glass-card rounded-2xl p-6 border border-slate-200/80 shadow-subtle flex flex-col justify-between hover:shadow-apple transition-all">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-en text-2xl font-black text-brand-500/40">01</span>
+<div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">search</span>
+</div>
+</div>
+<h3 class="text-lg font-bold text-textPrimary mb-2">الاكتشاف والتحليل</h3>
+<p class="text-xs text-textSecondary leading-relaxed">
+              تفكيك فكرة المشروع، تحليل المنافسين وسلوك المستخدم المستهدف، وتحديد معالم الـ MVP الأنسب للنمو السريع.
+            </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 text-[11px] font-semibold text-textTertiary">
+            المخرج: وثيقة المتطلبات وخريطة الرحلة
+          </div>
+</div>
+<!-- Step 2 -->
+<div class="glass-card rounded-2xl p-6 border border-slate-200/80 shadow-subtle flex flex-col justify-between hover:shadow-apple transition-all">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-en text-2xl font-black text-brand-500/40">02</span>
+<div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">palette</span>
+</div>
+</div>
+<h3 class="text-lg font-bold text-textPrimary mb-2">التصميم والنماذج</h3>
+<p class="text-xs text-textSecondary leading-relaxed">
+              ابتكار واجهات متقنة على Figma، ونماذج حية قابلة للنقر للاختبار، وتثبيت لغة Design System الشاملة.
+            </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 text-[11px] font-semibold text-textTertiary">
+            المخرج: نموذج تفاعلي ومكتبة UI
+          </div>
+</div>
+<!-- Step 3 -->
+<div class="glass-card rounded-2xl p-6 border border-slate-200/80 shadow-subtle flex flex-col justify-between hover:shadow-apple transition-all">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-en text-2xl font-black text-brand-500/40">03</span>
+<div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">code</span>
+</div>
+</div>
+<h3 class="text-lg font-bold text-textPrimary mb-2">البناء وهندسة الكود</h3>
+<p class="text-xs text-textSecondary leading-relaxed">
+              تحويل التصاميم إلى كود برمجي فائق الاستقرار عبر سبرنتات أسبوعية مع تكامل الـ APIs واختبارات الأداء الآلية.
+            </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 text-[11px] font-semibold text-textTertiary">
+            المخرج: إصدارات تجريبية عبر TestFlight
+          </div>
+</div>
+<!-- Step 4 -->
+<div class="glass-card rounded-2xl p-6 border border-slate-200/80 shadow-subtle flex flex-col justify-between hover:shadow-apple transition-all">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-en text-2xl font-black text-brand-500/40">04</span>
+<div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">rocket_launch</span>
+</div>
+</div>
+<h3 class="text-lg font-bold text-textPrimary mb-2">الإطلاق والنمو</h3>
+<p class="text-xs text-textSecondary leading-relaxed">
+              اعتماد التطبيق في App Store و Google Play، إعداد مؤشرات التتبع والتحليلات، وضمان استقرار الإطلاق 24/7.
+            </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 text-[11px] font-semibold text-textTertiary">
+            المخرج: تطبيق حي ومتاح للملايين
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================== -->
+<!-- 8. EDITORIAL TESTIMONIALS       -->
+<!-- =============================== -->
+<section class="py-24 md:py-32 bg-white relative" id="reviews">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<span class="text-xs font-bold text-brand-600 bg-brand-50 px-3 py-1 rounded-md mb-2 inline-block">شهادات الشركاء</span>
+<h2 class="text-3xl sm:text-4xl font-bold text-textPrimary tracking-tight">
+            ماذا يقول مؤسسو الشركات عن العمل معنا؟
+          </h2>
+</div>
+<div class="flex items-center gap-1 text-amber-400">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-textPrimary mr-2 font-en">4.9 / 5.0 (42 Review)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Review 1 -->
+<div class="p-8 rounded-3xl bg-surface-canvas border border-slate-200/80 shadow-subtle flex flex-col justify-between gap-6">
+<p class="text-sm md:text-base text-textPrimary leading-relaxed font-normal">
+            "فريق كيمفو رفع سقف التوقعات تماماً. أسلوبهم في تنفيذ واجهات تطبيقنا كان أشبه بمنتجات Apple العالمية. نال التطبيق إعجاب المستثمرين في أول عرض مباشر."
+          </p>
+<div class="flex items-center gap-3 pt-4 border-t border-slate-200/60">
+<div class="w-11 h-11 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">
+              س.ع
+            </div>
+<div>
+<div class="text-sm font-bold text-textPrimary">سعود العمري</div>
+<div class="text-xs text-textSecondary">المؤسس والرئيس التنفيذي • منصة وصل</div>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="p-8 rounded-3xl bg-surface-canvas border border-slate-200/80 shadow-subtle flex flex-col justify-between gap-6">
+<p class="text-sm md:text-base text-textPrimary leading-relaxed font-normal">
+            "الاحترافية في إدارة المشروع وسرعة تسليم الشاشات مع التجاوب مع ملاحظاتنا كانت استثنائية. زادت نسبة تحويل سلة المشتريات لدينا بنسبة 48% بعد أسبوعين فقط من التحديث."
+          </p>
+<div class="flex items-center gap-3 pt-4 border-t border-slate-200/60">
+<div class="w-11 h-11 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center text-sm">
+              ن.ق
+            </div>
+<div>
+<div class="text-sm font-bold text-textPrimary">نورة القحطاني</div>
+<div class="text-xs text-textSecondary">رئيسة تجربة المنتج • براند رواء</div>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="p-8 rounded-3xl bg-surface-canvas border border-slate-200/80 shadow-subtle flex flex-col justify-between gap-6">
+<p class="text-sm md:text-base text-textPrimary leading-relaxed font-normal">
+            "كيمفو ليسوا مجرد جهة منفذة، بل شركاء تفكير استراتيجي. أنقذونا من قرارات معمارية خاطئة ووفروا علينا أشهراً من الهدر التقني في تطبيقنا المالي."
+          </p>
+<div class="flex items-center gap-3 pt-4 border-t border-slate-200/60">
+<div class="w-11 h-11 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-sm">
+              ف.خ
+            </div>
+<div>
+<div class="text-sm font-bold text-textPrimary">فيصل الخالدي</div>
+<div class="text-xs text-textSecondary">الشريك المؤسس ومدير التقنية • باي سيف</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================== -->
+<!-- 9. HIGH-CONVERTING CTA BANNER   -->
+<!-- =============================== -->
+<section class="py-20 md:py-28 relative" id="contact">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Premium Curved Gradient Canvas -->
+<div class="relative rounded-3xl md:rounded-[40px] bg-gradient-to-br from-brand-900 via-slate-900 to-brand-950 p-8 sm:p-12 md:p-16 text-white overflow-hidden shadow-apple border border-slate-800">
+<!-- Ambient Radial Glows -->
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-brand-500/25 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-32 -left-32 w-96 h-96 bg-sky-500/20 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<!-- Narrative Left Column -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-300 text-xs font-semibold backdrop-blur-md w-fit">
+<span class="w-2 h-2 rounded-full bg-brand-400"></span>
+<span>جلسة استشارية استراتيجية مجانية</span>
+</div>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+              جاهز لنقل فكرتك إلى تطبيق رقمي استثنائي ينافس عالمياً؟
+            </h2>
+<p class="text-slate-300 text-base md:text-lg leading-relaxed max-w-xl">
+              احجز مكالمة عمل خاصة مدتها 30 دقيقة مع كبير مهندسي ومصممي كيمفو لتحليل متطلبات مشروعك، تقدير الجدول الزمني، ورسم خارطة الطريق الدقيقة.
+            </p>
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2 text-xs text-slate-300">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-brand-400 text-base">check_circle</span>
+<span>توقيع اتفاقية سرية (NDA) فورية</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-brand-400 text-base">check_circle</span>
+<span>دراسة معمارية مجانية</span>
+</div>
+</div>
+</div>
+<!-- Quick Booking Form Card -->
+<div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 shadow-2xl text-textPrimary">
+<h3 class="text-xl font-bold text-textPrimary mb-1">ابدأ محادثتك معنا</h3>
+<p class="text-xs text-textSecondary mb-6">سيتواصل معك مستشار الحلول خلال 3 ساعات عمل.</p>
+<form class="flex flex-col gap-4" onsubmit="event.preventDefault(); alert('شكراً لك! تلقينا طلبك وسيتواصل معك فريق كيمفو مباشرة.');">
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1">الاسم الكامل</label>
+<input class="w-full text-sm px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" placeholder="مثال: فيصل بن عبدالعزيز" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1">البريد الإلكتروني المهني</label>
+<input class="w-full text-sm px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all" placeholder="name@company.com" required="" type="email"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1">نوع المشروع</label>
+<select class="w-full text-sm px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all text-slate-700">
+<option>تصميم وتطوير تطبيق جوال كامل (iOS &amp; Android)</option>
+<option>إعادة تصميم تجربة المستخدم (UI/UX Redesign)</option>
+<option>منصة ويب وتطبيق ويب متقدم بـ Next.js</option>
+<option>بناء Design System مخصص للشركات</option>
+</select>
+</div>
+<button class="w-full mt-2 py-3.5 px-6 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm transition-all duration-200 shadow-glow-sm hover:shadow-glow flex items-center justify-center gap-2" type="submit">
+<span>تأكيد حجز الاستشارة المجانية</span>
+<span class="material-symbols-outlined text-sm transform -scale-x-100">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================== -->
+<!-- 10. ELITE MINIMALIST FOOTER    -->
+<!-- =============================== -->
+<footer class="bg-white border-t border-slate-200/80 pt-16 pb-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-100">
+<!-- Logo & Mission Column -->
+<div class="md:col-span-5 flex flex-col gap-4">
+<a class="inline-block focus:outline-none" href="#">
+<img alt="Kemvo Studio" class="h-10 w-auto object-contain" src="logo.png"/>
+</a>
+<p class="text-sm text-textSecondary max-w-sm leading-relaxed mt-2">
+            استوديو هندسة وتصميم المنتجات الرقمية؛ نبتكر تطبيقات وواجهات استثنائية للشركات الناشئة والمؤسسات الطموحة في الشرق الأوسط والعالم.
+          </p>
+<div class="flex items-center gap-3 pt-2">
+<a class="w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-50 hover:text-brand-600 flex items-center justify-center text-slate-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm font-en">terminal</span>
+</a>
+<a class="w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-50 hover:text-brand-600 flex items-center justify-center text-slate-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm font-en">alternate_email</span>
+</a>
+<a class="w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-50 hover:text-brand-600 flex items-center justify-center text-slate-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm font-en">public</span>
+</a>
+</div>
+</div>
+<!-- Links Col 1 -->
+<div class="md:col-span-2 flex flex-col gap-3">
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-900">الخدمات</h4>
+<a class="text-sm text-textSecondary hover:text-brand-600 transition-colors" href="#services">تصميم UI/UX للهواتف</a>
+<a class="text-sm text-textSecondary hover:text-brand-600 transition-colors" href="#services">تطوير تطبيقات الجوال</a>
+<a class="text-sm text-textSecondary hover:text-brand-600 transition-colors" href="#services">منصات Next.js الحديثة</a>
+<a class="text-sm text-textSecondary hover:text-brand-600 transition-colors" href="#services">أنظمة التصميم (Design Systems)</a>
+</div>
+<!-- Links Col 2 -->
+<div class="md:col-span-2 flex flex-col gap-3">
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-900">الاستوديو</h4>
+<a class="text-sm text-textSecondary hover:text-brand-600 transition-colors" href="#portfolio">سابقة الأعمال</a>
+<a class="text-sm text-textSecondary hover:text-brand-600 transition-colors" href="#process">منهجية العمل</a>
+<a class="text-sm text-textSecondary hover:text-brand-600 transition-colors" href="#reviews">آراء العملاء</a>
+<a class="text-sm text-textSecondary hover:text-brand-600 transition-colors" href="#contact">طلب استشارة</a>
+</div>
+<!-- Direct Contact Col 3 -->
+<div class="md:col-span-3 flex flex-col gap-3">
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-900">التواصل المباشر</h4>
+<p class="text-sm text-textSecondary">الرياض، المملكة العربية السعودية</p>
+<p class="text-sm font-en text-brand-600 font-semibold">hello@kemvo.studio</p>
+<div class="mt-2 p-3 rounded-xl bg-slate-50 border border-slate-200/70 text-xs text-textSecondary">
+            متاحون لاستقبال مشاريع الربع القادم.
+          </div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-textTertiary">
+<p>© 2025 كيمفو ستوديو (Kemvo Studio). جميع الحقوق محفوظة.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-textSecondary transition-colors" href="#">سياسة الخصوصية</a>
+<a class="hover:text-textSecondary transition-colors" href="#">شروط الخدمة</a>
+<span class="font-en">Designed with Precision &amp; Care</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
