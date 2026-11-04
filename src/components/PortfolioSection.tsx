@@ -87,12 +87,16 @@ function CardVisualPreview({
           </div>
 
           {/* In-App Screen Content: Karamty */}
-          <div className="bg-[#F8FAFC] rounded-[22px] flex-1 flex flex-col justify-between p-2 overflow-hidden text-slate-900">
+          <div className="bg-[#F8FAFC] rounded-[22px] flex-1 flex flex-col justify-between p-2.5 overflow-hidden text-slate-900">
             {/* App Top Bar */}
-            <div className="bg-gradient-to-r from-[#1366FF] to-[#0052E0] p-2 rounded-xl text-white shadow-xs">
+            <div className="bg-gradient-to-r from-[#1366FF] to-[#0052E0] p-1.5 sm:p-2 rounded-xl text-white shadow-xs">
               <div className="flex items-center justify-between text-[8px] font-bold">
-                <span className="flex items-center gap-1">
-                  <BookOpen className="w-2.5 h-2.5" />
+                <span className="flex items-center gap-1.5">
+                  <img
+                    src="/images/karamty-logo.jpg"
+                    alt="كرمتي"
+                    className="w-3.5 h-3.5 rounded-full border border-white/60 object-contain shadow-xs bg-white shrink-0"
+                  />
                   {isAr ? "كرمتي – منصة الخدمة" : "Karamty Platform"}
                 </span>
                 <span className="bg-white/20 px-1 py-0.5 rounded text-[7px] font-mono">
@@ -101,35 +105,28 @@ function CardVisualPreview({
               </div>
             </div>
 
-            {/* Attendance & Activity Modules */}
-            <div className="space-y-1.5 my-auto">
-              <div className="bg-white border border-slate-200/90 p-1.5 rounded-lg shadow-xs">
-                <div className="flex items-center justify-between text-[8px] font-extrabold text-[#090D1A]">
-                  <span>{isAr ? "كشف حضور مدارس الأحد" : "Sunday Attendance"}</span>
-                  <span className="text-emerald-600 font-mono text-[7px]">98%</span>
-                </div>
-                <div className="text-[7px] text-slate-500 mt-0.5 flex justify-between">
-                  <span>{isAr ? "الفصل: ابتدائي بنين" : "Class: Primary"}</span>
-                  <span className="text-[#1366FF] font-bold">{isAr ? "تسجيل فوري" : "Instant"}</span>
-                </div>
+            {/* Central Prominent App Logo & Hero Identity */}
+            <div className="my-auto py-1 flex flex-col items-center justify-center text-center">
+              <div className="relative group-hover:scale-110 transition-transform duration-300 mb-1.5">
+                <div className="absolute inset-0 bg-purple-500/20 blur-md rounded-full" />
+                <img
+                  src="/images/karamty-logo.jpg"
+                  alt="لوجو تطبيق كرمتي"
+                  className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-white shadow-md object-contain bg-white mx-auto"
+                />
               </div>
-
-              <div className="bg-white border border-slate-200/90 p-1.5 rounded-lg shadow-xs">
-                <div className="flex items-center justify-between text-[8px] font-extrabold text-[#090D1A]">
-                  <span>{isAr ? "مسابقات مهرجان الكرازة" : "Festival Contest"}</span>
-                  <span className="text-[#1366FF] font-mono text-[7px]">Active</span>
-                </div>
-                <div className="text-[7px] text-slate-500 mt-0.5">
-                  {isAr ? "مناهج وألعاب تفاعلية مباشرة" : "Interactive Curricula"}
-                </div>
-              </div>
+              <span className="text-[10px] font-extrabold text-[#090D1A] block">
+                {isAr ? "تطبيق «كرمتي»" : "Karamty App"}
+              </span>
+              <span className="text-[7px] font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200/60 mt-0.5">
+                {isAr ? "منصة خدمة ومجتمع تفاعلية" : "EdTech & Service Platform"}
+              </span>
             </div>
 
-            {/* In-App Bottom Nav */}
-            <div className="bg-white border-t border-slate-200 pt-1 flex justify-around text-[7px] text-slate-400">
-              <span className="text-[#1366FF] font-bold">{isAr ? "الرئيسية" : "Home"}</span>
-              <span>{isAr ? "المناهج" : "Lessons"}</span>
-              <span>{isAr ? "الأنشطة" : "Contests"}</span>
+            {/* In-App Live Metric Pill */}
+            <div className="bg-white border border-slate-200/90 px-2 py-1 rounded-lg shadow-xs flex items-center justify-between text-[7px]">
+              <span className="text-slate-600 font-medium">{isAr ? "نسبة التفاعل والحضور" : "Engagement"}</span>
+              <span className="text-emerald-600 font-bold font-mono">100% متكاملة</span>
             </div>
           </div>
         </div>
@@ -153,12 +150,16 @@ function CardVisualPreview({
           </div>
 
           {/* In-App Screen Content: inRide */}
-          <div className="bg-[#0E1B28] rounded-[22px] flex-1 flex flex-col justify-between p-2 overflow-hidden text-white relative">
+          <div className="bg-[#0B1522] rounded-[22px] flex-1 flex flex-col justify-between p-2.5 overflow-hidden text-white relative">
             {/* Top Ride Header */}
-            <div className="bg-slate-900/90 border border-slate-800 p-2 rounded-xl">
+            <div className="bg-slate-900/90 border border-slate-800 p-1.5 sm:p-2 rounded-xl">
               <div className="flex items-center justify-between text-[8px] font-bold text-sky-400">
-                <span className="flex items-center gap-1">
-                  <Car className="w-2.5 h-2.5" />
+                <span className="flex items-center gap-1.5">
+                  <img
+                    src="/images/inride-logo.png"
+                    alt="إن رايد"
+                    className="w-3.5 h-3.5 rounded object-contain bg-white shrink-0 shadow-xs"
+                  />
                   {isAr ? "إن رايد – تنقل ذكي" : "inRide Mobility"}
                 </span>
                 <span className="text-emerald-400 font-mono text-[7px] flex items-center gap-0.5">
@@ -168,23 +169,28 @@ function CardVisualPreview({
               </div>
             </div>
 
-            {/* Simulated Live Route Map View */}
-            <div className="my-auto relative h-18 bg-slate-950/80 rounded-lg p-1.5 border border-slate-800 overflow-hidden">
-              <div className="absolute top-2 left-4 w-2 h-2 rounded-full bg-blue-500 ring-4 ring-blue-500/20" />
-              <div className="absolute bottom-3 right-5 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" />
-              <div className="border-b border-dashed border-sky-400/60 absolute top-4 left-5 w-18 rotate-25" />
-              <div className="absolute bottom-1 left-2 bg-slate-900/90 px-1.5 py-0.5 rounded text-[6px] text-sky-300">
-                {isAr ? "كابتن أحمد • 4.9 ★" : "Capt. Ahmed • 4.9 ★"}
+            {/* Central Prominent inRide Logo & Status */}
+            <div className="my-auto py-1 flex flex-col items-center justify-center text-center">
+              <div className="relative group-hover:scale-110 transition-transform duration-300 mb-1.5">
+                <div className="absolute inset-0 bg-sky-500/25 blur-md rounded-2xl" />
+                <img
+                  src="/images/inride-logo.png"
+                  alt="لوجو تطبيق إن رايد"
+                  className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border border-sky-400/40 shadow-md object-contain bg-white mx-auto p-1"
+                />
               </div>
+              <span className="text-[10px] font-extrabold text-white block">
+                {isAr ? "تطبيق «إن رايد»" : "inRide App"}
+              </span>
+              <span className="text-[7px] font-semibold text-sky-300 bg-sky-950/70 px-2 py-0.5 rounded-full border border-sky-500/30 mt-0.5 font-mono">
+                {isAr ? "نقل وتوصيل ذكي فوري" : "Mobility & Ride Hailing"}
+              </span>
             </div>
 
             {/* Ride Offer Card */}
-            <div className="bg-white/10 border border-white/10 p-1.5 rounded-lg flex items-center justify-between text-[7px]">
-              <div>
-                <span className="font-bold block text-white">{isAr ? "عرض السعر المقترح" : "Offered Fare"}</span>
-                <span className="text-slate-400 text-[6px]">{isAr ? "تأكيد فوري مع الكابتن" : "Direct Negotiation"}</span>
-              </div>
-              <span className="font-mono font-bold text-emerald-400 text-[9px]">45.00 {isAr ? "ر.س" : "SAR"}</span>
+            <div className="bg-white/10 border border-white/10 px-2 py-1 rounded-lg flex items-center justify-between text-[7px]">
+              <span className="text-slate-300">{isAr ? "عرض السعر المقترح" : "Fare"}</span>
+              <span className="font-mono font-bold text-emerald-400 text-[8px]">45.00 {isAr ? "ر.س" : "SAR"}</span>
             </div>
           </div>
         </div>
@@ -208,28 +214,37 @@ function CardVisualPreview({
           </div>
         </div>
 
-        {/* Blueprint Screen Content */}
-        <div className="rounded-[22px] border border-blue-400/30 bg-blue-950/40 p-2.5 flex-1 flex flex-col items-center justify-center text-center">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#1366FF] to-[#00C6FF] flex items-center justify-center shadow-glow-sm mb-2 group-hover:scale-110 transition-transform">
-            <Sparkles className="w-5 h-5 text-white" />
+        {/* Blueprint Screen Content with 3D App Design Icon */}
+        <div className="rounded-[22px] border border-blue-400/30 bg-blue-950/60 p-2.5 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden">
+          {/* Subtle Ambient Radial Glow */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1366FF]/30 to-transparent pointer-events-none" />
+
+          {/* Prominent 3D App Design Icon */}
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 mb-1.5 group-hover:scale-110 transition-transform duration-300">
+            <div className="absolute inset-0 bg-[#1366FF]/40 blur-lg rounded-2xl" />
+            <img
+              src="/images/app-design-3d.png"
+              alt="أيقونة تصميم وتطوير التطبيقات 3D"
+              className="relative w-full h-full object-contain rounded-2xl drop-shadow-[0_10px_20px_rgba(19,102,255,0.5)]"
+            />
           </div>
 
           <span className="text-[10px] font-black text-white block leading-tight">
-            {isAr ? "مشروعك الرقمي القادم" : "Your Next Big Idea"}
+            {isAr ? "خدمة تصميم وتطوير التطبيقات" : "App Design & Engineering"}
           </span>
-          <span className="text-[8px] text-blue-200 mt-0.5 font-medium">
-            {isAr ? "Ready to Code & Launch" : "Ready to Code & Launch"}
+          <span className="text-[7px] text-cyan-300 mt-0.5 font-medium">
+            {isAr ? "Next Big Thing • جاهز للانطلاق" : "Ready to Code & Launch"}
           </span>
 
-          <div className="flex items-center gap-1 mt-2.5">
-            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/20 text-cyan-300 text-[7px] font-mono border border-blue-400/20">
+          <div className="flex items-center gap-1 mt-2">
+            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/25 text-cyan-300 text-[7px] font-mono border border-blue-400/30">
               iOS
             </span>
-            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/20 text-cyan-300 text-[7px] font-mono border border-blue-400/20">
+            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/25 text-cyan-300 text-[7px] font-mono border border-blue-400/30">
               Android
             </span>
-            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/20 text-cyan-300 text-[7px] font-mono border border-blue-400/20">
-              Web
+            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/25 text-cyan-300 text-[7px] font-mono border border-blue-400/30">
+              Flutter
             </span>
           </div>
         </div>
@@ -312,10 +327,19 @@ export default function PortfolioSection() {
                     onClick={() => setSelectedCase(item)}
                     className="cursor-pointer p-5 sm:p-6 md:p-8"
                   >
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#090D1A] group-hover:text-[#1366FF] transition-colors leading-snug">
-                      {item.appName}
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-base text-[#525B75] mt-2 sm:mt-2.5 leading-relaxed font-normal">
+                    <div className="flex items-center gap-3 mb-2 sm:mb-2.5">
+                      <img
+                        src={item.id === "karamty" ? "/images/karamty-logo.jpg" : "/images/inride-logo.png"}
+                        alt={item.appName}
+                        className={`w-9 h-9 sm:w-10 sm:h-10 object-contain shadow-xs shrink-0 group-hover:scale-105 transition-transform ${
+                          item.id === "karamty" ? "rounded-full border border-purple-200" : "rounded-xl border border-sky-200"
+                        }`}
+                      />
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#090D1A] group-hover:text-[#1366FF] transition-colors leading-snug">
+                        {item.appName}
+                      </h3>
+                    </div>
+                    <p className="text-xs sm:text-sm md:text-base text-[#525B75] leading-relaxed font-normal">
                       {item.tagline}
                     </p>
                   </div>
@@ -376,11 +400,18 @@ export default function PortfolioSection() {
               {/* Card Body */}
               <div className="p-5 sm:p-6 md:p-8">
                 <a href="#contact" className="group-hover:text-[#1366FF] transition-colors">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#090D1A] group-hover:text-[#1366FF] transition-colors leading-snug">
-                    {t.ctaCard?.appName || "«فكرتك القادمة تبدأ هنا»"}
-                  </h3>
+                  <div className="flex items-center gap-3 mb-2 sm:mb-2.5">
+                    <img
+                      src="/images/app-design-3d.png"
+                      alt="خدمة تصميم التطبيقات 3D"
+                      className="w-9 h-9 sm:w-10 sm:h-10 object-contain rounded-xl shadow-xs shrink-0 group-hover:scale-105 transition-transform"
+                    />
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#090D1A] group-hover:text-[#1366FF] transition-colors leading-snug">
+                      {t.ctaCard?.appName || "«فكرتك القادمة تبدأ هنا»"}
+                    </h3>
+                  </div>
                 </a>
-                <p className="text-xs sm:text-sm md:text-base text-[#525B75] mt-2 sm:mt-2.5 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm md:text-base text-[#525B75] leading-relaxed font-normal">
                   {t.ctaCard?.tagline ||
                     "هل لديك فكرة تطبيق مبتكرة؟ دعنا نحولها إلى منتج رقمي استثنائي ينافس عالمياً بنظام تصميم Apple ومعايير هندسية فائقة السرعة."}
                 </p>
@@ -431,9 +462,18 @@ export default function PortfolioSection() {
               </span>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-bold text-[#090D1A] mb-4">
-              {selectedCase.title}
-            </h3>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src={selectedCase.id === "karamty" ? "/images/karamty-logo.jpg" : "/images/inride-logo.png"}
+                alt={selectedCase.title}
+                className={`w-10 h-10 object-contain shadow-xs shrink-0 ${
+                  selectedCase.id === "karamty" ? "rounded-full border border-purple-200" : "rounded-xl border border-sky-200"
+                }`}
+              />
+              <h3 className="text-xl sm:text-2xl font-bold text-[#090D1A]">
+                {selectedCase.title}
+              </h3>
+            </div>
 
             {/* Modal Mockup Preview */}
             <div className="rounded-xl sm:rounded-2xl overflow-hidden h-52 sm:h-60 mb-5 sm:mb-6 border border-slate-100 shadow-sm">
