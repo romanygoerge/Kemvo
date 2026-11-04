@@ -112,7 +112,7 @@ export const metadata: Metadata = {
     apple: "/images/logo-icon.png",
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "google-site-verification-placeholder",
+    google: "u7rfacximhrVlYpRI4IrhO4kTNfn_3dchq8GBumsMhs",
   },
 };
 
@@ -222,6 +222,7 @@ export default function RootLayout({
       className={`${ibmPlexArabic.variable} ${plusJakartaSans.variable} scroll-smooth`}
     >
       <head>
+        <meta name="google-site-verification" content="u7rfacximhrVlYpRI4IrhO4kTNfn_3dchq8GBumsMhs" />
         {/* Organization JSON-LD Schema */}
         <script
           type="application/ld+json"
