@@ -5,40 +5,40 @@ import { ArrowLeft, X, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/translations";
 
-// 1. High-End 3D Icon for UI/UX Design (Zero Shadow)
+// 1. High-End 3D Icon for UI/UX Design (Zero Shadow, Large & Clear)
 function UIUXServiceIcon() {
   return (
-    <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-b from-white to-blue-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-blue-400 transition-all duration-300">
+    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-b from-white to-blue-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-blue-400 transition-all duration-300">
       <img
         src="/images/service-3d-uiux.png"
         alt="تصميم واجهات وتجربة المستخدم 3D"
-        className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl"
+        className="w-22 h-22 sm:w-26 sm:h-26 object-contain rounded-2xl"
       />
     </div>
   );
 }
 
-// 2. High-End 3D Icon for Mobile Applications (Zero Shadow)
+// 2. High-End 3D Icon for Mobile Applications (Zero Shadow, Large & Clear)
 function MobileServiceIcon() {
   return (
-    <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-b from-white to-sky-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-sky-400 transition-all duration-300">
+    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-b from-white to-sky-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-sky-400 transition-all duration-300">
       <img
         src="/images/service-3d-mobile.png"
         alt="تطوير تطبيقات الجوال 3D"
-        className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl"
+        className="w-22 h-22 sm:w-26 sm:h-26 object-contain rounded-2xl"
       />
     </div>
   );
 }
 
-// 3. High-End 3D Icon for Web Platforms (Zero Shadow)
+// 3. High-End 3D Icon for Web Platforms (Zero Shadow, Large & Clear)
 function WebServiceIcon() {
   return (
-    <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-b from-white to-indigo-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-indigo-400 transition-all duration-300">
+    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-b from-white to-indigo-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-indigo-400 transition-all duration-300">
       <img
         src="/images/service-3d-web.png"
         alt="تطوير المواقع والمنصات 3D"
-        className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl"
+        className="w-22 h-22 sm:w-26 sm:h-26 object-contain rounded-2xl"
       />
     </div>
   );
