@@ -137,74 +137,67 @@ export const translations = {
         "نماذج واقعية لمنتجات وتطبيقات رقمية قمنا بهندستها وتصميمها لرواد الأعمال والشركات الطموحة لتتصدر أسواقها وتحدث أثراً استثنائياً.",
       viewFullStudy: "استعراض دراسة الحالة كاملة",
       viewDetails: "عرض التفاصيل",
+      viewOnPlayStore: "Google Play ↗",
+      downloadOnPlayStore: "تحميل التطبيق من متجر Google Play",
       cases: [
         {
-          id: "darahim",
-          categoryLabel: "Fintech • تقنية مالية",
-          appName: "تطبيق «دراهمك»",
-          title: "تطبيق «دراهمك» للحلول المالية والاستثمار",
+          id: "karamty",
+          categoryLabel: "EdTech & Service • منصة خدمة ومجتمع",
+          appName: "تطبيق «كرمتي»",
+          title: "تطبيق «كرمتي» – للخدمة ومدارس الأحد",
           tagline:
-            "منصة استثمارية مرخصة تقدم تجربة رقمية فائقة السرعة لإدارة وتنمية الأموال.",
-          metric: "+54% الإيداعات الشهرية",
+            "منصة رقمية متكاملة مخصصة لتنظيم وإدارة خدمات الكنيسة ومدارس الأحد، تجمع أدوات الحضور والمناهج والمسابقات التفاعلية.",
+          metric: "منصة متكاملة 100%",
+          playStoreUrl:
+            "https://play.google.com/store/apps/details?id=com.karamty.karamty_app",
           fullDetails: {
-            client: "شركة دراهمك للتقنية المالية",
+            client: "فريق كرمتي للخدمات المجتمعية",
             timeline: "12 أسبوعاً",
             challenge:
-              "كانت خطوات فتح المحفظة الاستثمارية تستغرق 9 دقائق مع نسبة ارتداد 42% بسبب تعقيد نماذج الإفصاح المالي.",
+              "الحاجة لمنظومة رقمية شاملة تجمع بيانات آلاف المخدومين والخدام، مع إدارة المناهج الدينية، تسجيل الحضور والغياب لحظياً، وتنظيم فعاليات مسابقات المهرجان دون تشتت بين الملفات الورقية ومجموعات التواصل.",
             solution:
-              "أعدنا هندسة رحلة المستخدم بالكامل لتعتمد على خطوات ذكية متتالية مع التحقق الفوري عبر النفاذ الوطني، وتصميم بطاقات محافظ استثمارية تفاعلية بأسلوب Apple Wallet.",
+              "هندسة وتصميم تطبيق جوال متكامل بنظام Flutter وسيرفرات سحابية فائقة الاستقرار، مع واجهات تفاعلية تدعم مسابقات المهرجان، وتوفير مكتبة نصوص وطقوس دينية متكاملة، ولوحة تحكم إدارية ذكية لإدارة الميزانيات والمخازن والتقارير.",
             impact: [
-              "تقليص وقت فتح الحساب من 9 دقائق إلى 85 ثانية فقط",
-              "نمو حجم الإيداعات الشهرية بنسبة +54%",
-              "تحقيق تقييم 4.9 في متجر App Store بعد 100 ألف تنزيل",
+              "إدارة آلاف المخدومين ومئات الخدام بسلاسة رقمية فائقة",
+              "تقليص الوقت المستغرق في تسجيل الحضور وتنظيم الأنشطة بنسبة 75%",
+              "تفاعل يومي نشط وسهولة وصول فائقة للمناهج والمسابقات الروحية",
             ],
           },
         },
         {
-          id: "saree",
-          categoryLabel: "Logistics • توصيل وشحن",
-          appName: "منصة «سريع»",
-          title: "منصة «سريع» للخدمات اللوجستية والشحن",
+          id: "inride",
+          categoryLabel: "Mobility & Delivery • نقل وتوصيل ذكي",
+          appName: "تطبيق «إن رايد» (inRide)",
+          title: "تطبيق «إن رايد» (inRide) للنقل الذكي وتوصيل الطرود",
           tagline:
-            "منظومة لوجستية ذكية لتتبع وإدارة آلاف الشحنات الحية عبر الأقمار الصناعية بدقة متناهية.",
-          metric: "30,000+ طلب يومي",
+            "تطبيق نقل ذكي وتوصيل طرود متطور يتيح للركاب طلب الرحلات واقتراح الأجرة واختيار الكابتن مع تتبع لحظي عبر الخرائط.",
+          metric: "30,000+ رحلة منجزة",
+          playStoreUrl:
+            "https://play.google.com/store/apps/details?id=com.inride.inride_app",
           fullDetails: {
-            client: "مجموعة سريع اللوجستية",
+            client: "شركة إن رايد (inRide) للنقل والخدمات اللوجستية",
             timeline: "16 أسبوعاً",
             challenge:
-              "الحاجة لإدارة آلاف الشحنات اللحظية في 14 مدينة مع تتبع مباشر للخرائط دون استنزاف بطارية أجهزة السائقين.",
+              "بناء منصة تنقل ذكية ومرنة تدعم نموذج التفاوض على الأجرة وتحديد الأسعار المباشرة بين الركاب والسائقين، مع تتبع GPS عالي الدقة دون استنزاف بطاريات هواتف الكباتن أو انقطاع الاتصال في المناطق المزدحمة.",
             solution:
-              "بناء تطبيق Native بتقنية Swift ومعمارية WebSocket فائقة الخفة مع خوارزميات توجيه مسارات متقدمة وواجهات بديهية بلمسة واحدة.",
+              "تطوير تطبيقين متزامنين (تطبيق للركاب وتطبيق للكباتن) بمعمارية WebSocket فائقة الخفة للتحديث اللحظي للمواقع والطلبات، مع خوارزميات تسعير مرنة، ونظام تقييم فوري، وتكامل سلس مع بوابات الدفع الإلكتروني والخرائط.",
             impact: [
-              "معالجة أكثر من 30,000 طلب يومي دون أي انقطاع",
-              "تقليل استهلاك البطارية لتطبيق السائق بنسبة 35%",
-              "انخفاض معدل شكاوى التأخير بنسبة 62%",
-            ],
-          },
-        },
-        {
-          id: "aafiyati",
-          categoryLabel: "HealthTech • استشارات طبية",
-          appName: "منصة «عافيتي»",
-          title: "منصة «عافيتي» للاستشارات والطب الاتصالي",
-          tagline:
-            "استشارات طبية بالفيديو عالية التشفير وجدولة مواعيد مرنة لرعاية صحية استثنائية.",
-          metric: "أفضل تطبيق صحي 2024",
-          fullDetails: {
-            client: "منصة عافيتي للرعاية الصحية",
-            timeline: "14 أسبوعاً",
-            challenge:
-              "صعوبة تجربة مكالمات الفيديو للمرضى كبار السن وحساسية حفظ وتداول الملفات والتقارير الطبية المشفرة.",
-            solution:
-              "تصميم واجهات فائقة البساطة متوافقة مع معايير الوصول العالمية (a11y)، مع اتصال WebRTC مشفر لحظي وغرفة انتظار افتراضية تفاعلية.",
-            impact: [
-              "جائزة أفضل تطبيق صحي في مؤتمر الصحة الرقمية 2024",
-              "معدل رضا المستخدمين 98% من أكثر من 50 ألف مريض",
-              "توافق كامل مع متطلبات الأمان الصحي والمعايير التنظيمية",
+              "إنجاز عشرات الآلاف من الرحلات وتوصيل الطرود بنجاح وثبات 99.9%",
+              "زمن استجابة أقل من ثانية لمطابقة العروض والرحلات بين الراكب والكابتن",
+              "تطبيق فائق السرعة يدعم آلاف المستخدمين النشطين يومياً",
             ],
           },
         },
       ],
+      ctaCard: {
+        categoryLabel: "✨ مشروعك القادم • Next Big Thing",
+        appName: "«فكرتك القادمة تبدأ هنا»",
+        tagline:
+          "هل لديك فكرة تطبيق جوال أو منصة رقمية؟ دعنا نحولها إلى منتج رقمي استثنائي ينافس عالمياً بنظام تصميم Apple وبنية تحتية فائقة السرعة.",
+        metric: "جاهز للإطلاق 🚀",
+        ctaButton: "ابدأ بناء تطبيقك الآن",
+        freeConsult: "استشارة هندسية مجانية 100%",
+      },
       modalDuration: "مدة التنفيذ:",
       modalChallenge: "العميل والتحدي:",
       modalSolution: "الحل الهندسي والتصميمي:",
@@ -470,74 +463,67 @@ export const translations = {
         "Real-world products engineered and designed for ambitious founders to dominate their respective markets.",
       viewFullStudy: "View Full Case Study",
       viewDetails: "View Details",
+      viewOnPlayStore: "Google Play ↗",
+      downloadOnPlayStore: "Download on Google Play",
       cases: [
         {
-          id: "darahim",
-          categoryLabel: "Fintech • Financial Tech",
-          appName: "«Darahimk» App",
-          title: "Darahimk Fintech & Wealth Management",
+          id: "karamty",
+          categoryLabel: "EdTech & Service • Church & Community",
+          appName: "«Karamty» App",
+          title: "Karamty – Church Service & Sunday School Platform",
           tagline:
-            "A licensed fintech investment platform delivering rapid digital portfolio management.",
-          metric: "+54% Monthly Deposits",
+            "An integrated digital platform for Sunday schools and church service operations, managing attendance, curricula, and competitions.",
+          metric: "100% Integrated Platform",
+          playStoreUrl:
+            "https://play.google.com/store/apps/details?id=com.karamty.karamty_app",
           fullDetails: {
-            client: "Darahimk Fintech Corp",
+            client: "Karamty Ministry Team",
             timeline: "12 Weeks",
             challenge:
-              "Portfolio onboarding took 9 minutes with a 42% abandonment rate due to complex financial disclosure forms.",
+              "Managing thousands of Sunday school students and servants with real-time attendance, digital spiritual curricula, and event scoring without fragmentation.",
             solution:
-              "We re-architected the entire journey into smart progressive steps with instant identity verification and interactive Apple Wallet-style asset cards.",
+              "Engineered high-performance Flutter mobile application with cloud-synced offline attendance, interactive festival competitions, and financial administration.",
             impact: [
-              "Reduced onboarding time from 9 minutes down to 85 seconds",
-              "+54% growth in monthly deposit volumes",
-              "Achieved 4.9 App Store rating across 100K+ downloads",
+              "Streamlined management for thousands of youth and servants",
+              "75% reduction in administrative attendance logging overhead",
+              "Daily active engagement with digital spiritual curricula",
             ],
           },
         },
         {
-          id: "saree",
-          categoryLabel: "Logistics • Delivery Platform",
-          appName: "«Saree» Platform",
-          title: "Saree Intelligent Logistics & Freight",
+          id: "inride",
+          categoryLabel: "Mobility & Delivery • Smart Ride-Hailing",
+          appName: "«inRide» App",
+          title: "inRide – Smart Mobility & Delivery Platform",
           tagline:
-            "Smart logistics platform managing thousands of active live dispatches via precision satellite tracking.",
-          metric: "30,000+ Daily Orders",
+            "Next-generation ride-hailing and parcel delivery platform with live GPS tracking, flexible fare negotiation, and direct driver selection.",
+          metric: "30,000+ Completed Trips",
+          playStoreUrl:
+            "https://play.google.com/store/apps/details?id=com.inride.inride_app",
           fullDetails: {
-            client: "Saree Logistics Group",
+            client: "inRide Logistics & Mobility Corp",
             timeline: "16 Weeks",
             challenge:
-              "Managing thousands of concurrent orders across 14 cities with real-time mapping without draining driver battery life.",
+              "Building dynamic ride negotiation rails and real-time mapping without draining driver battery life or lagging during rush hours.",
             solution:
-              "Built native Swift and lightweight WebSocket architecture with advanced route-clustering algorithms and one-tap driver actions.",
+              "Developed dual synchronous apps (Passenger & Captain) powered by lightweight WebSockets, real-time map clustering, and flexible instant payment integrations.",
             impact: [
-              "Handled 30,000+ daily orders with zero system downtime",
-              "Reduced driver device battery consumption by 35%",
-              "Decreased delivery delay complaints by 62%",
-            ],
-          },
-        },
-        {
-          id: "aafiyati",
-          categoryLabel: "HealthTech • Telehealth",
-          appName: "«Aafiyati» Platform",
-          title: "Aafiyati Telehealth & Virtual Clinics",
-          tagline:
-            "HIPAA-compliant encrypted telehealth platform offering seamless video consultations and clinic bookings.",
-          metric: "Best HealthTech App 2024",
-          fullDetails: {
-            client: "Aafiyati Healthcare Inc",
-            timeline: "14 Weeks",
-            challenge:
-              "Elderly patients found video calling confusing, and medical record handling required strict privacy compliance.",
-            solution:
-              "Designed ultra-simple accessible UI (a11y) with instant WebRTC encryption and interactive virtual waiting room experience.",
-            impact: [
-              "Awarded Best HealthTech App at Digital Health Summit 2024",
-              "98% patient satisfaction score across 50,000+ consults",
-              "Full compliance with international health privacy standards",
+              "Processed tens of thousands of rides and parcel dispatches with 99.9% uptime",
+              "Sub-second dispatch matching latency between passenger and captain",
+              "Ultra-fast native mobile app handling peak concurrent users",
             ],
           },
         },
       ],
+      ctaCard: {
+        categoryLabel: "✨ Your Next Project • Next Big Thing",
+        appName: "«Your Next App Starts Here»",
+        tagline:
+          "Have a groundbreaking mobile app or platform idea? Let us turn it into an Apple-grade, high-performance product loved by millions.",
+        metric: "Ready to Launch 🚀",
+        ctaButton: "Build Your App Now",
+        freeConsult: "100% Free Strategy Consultation",
+      },
       modalDuration: "Execution Timeline:",
       modalChallenge: "Client & Challenge:",
       modalSolution: "Design & Engineering Solution:",
