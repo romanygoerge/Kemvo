@@ -73,61 +73,21 @@ function CardVisualPreview({
 }) {
   if (type === "karamty") {
     return (
-      <div className="relative w-full h-full bg-gradient-to-br from-[#0B152B] via-[#081020] to-[#1366FF]/60 flex items-center justify-center p-3 overflow-hidden select-none">
-        {/* Soft Ambient Glow */}
-        <div className="absolute inset-0 bg-[#1366FF]/25 blur-[45px] rounded-full pointer-events-none" />
+      <div className="relative w-full h-full bg-gradient-to-br from-[#12072B] via-[#1B0B3B] to-[#2E1065] flex items-center justify-center p-6 sm:p-8 overflow-hidden select-none">
+        {/* Soft Ambient Brand Glows */}
+        <div className="absolute inset-0 bg-purple-600/20 blur-[50px] rounded-full pointer-events-none" />
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/25 blur-[40px] rounded-full pointer-events-none" />
+        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#1366FF]/20 blur-[40px] rounded-full pointer-events-none" />
 
-        {/* Realistic iPhone Mockup */}
-        <div className="relative w-[180px] sm:w-[200px] h-[220px] sm:h-[250px] rounded-[30px] bg-slate-900 border-[3px] border-slate-700/90 shadow-2xl p-1.5 flex flex-col justify-between overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
-          {/* Dynamic Island */}
-          <div className="bg-[#090D1A] pt-1 pb-1 px-3 flex justify-center items-center">
-            <div className="w-12 h-2.5 bg-slate-950 rounded-full flex items-center justify-end px-1">
-              <div className="w-1 h-1 rounded-full bg-blue-500" />
-            </div>
-          </div>
-
-          {/* In-App Screen Content: Karamty */}
-          <div className="bg-[#F8FAFC] rounded-[22px] flex-1 flex flex-col justify-between p-2.5 overflow-hidden text-slate-900">
-            {/* App Top Bar */}
-            <div className="bg-gradient-to-r from-[#1366FF] to-[#0052E0] p-1.5 sm:p-2 rounded-xl text-white shadow-xs">
-              <div className="flex items-center justify-between text-[8px] font-bold">
-                <span className="flex items-center gap-1.5">
-                  <img
-                    src="/images/karamty-logo.jpg"
-                    alt="كرمتي"
-                    className="w-3.5 h-3.5 rounded-full border border-white/60 object-contain shadow-xs bg-white shrink-0"
-                  />
-                  {isAr ? "كرمتي – منصة الخدمة" : "Karamty Platform"}
-                </span>
-                <span className="bg-white/20 px-1 py-0.5 rounded text-[7px] font-mono">
-                  Online
-                </span>
-              </div>
-            </div>
-
-            {/* Central Prominent App Logo & Hero Identity */}
-            <div className="my-auto py-1 flex flex-col items-center justify-center text-center">
-              <div className="relative group-hover:scale-110 transition-transform duration-300 mb-1.5">
-                <div className="absolute inset-0 bg-purple-500/20 blur-md rounded-full" />
-                <img
-                  src="/images/karamty-logo.jpg"
-                  alt="لوجو تطبيق كرمتي"
-                  className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-white shadow-md object-contain bg-white mx-auto"
-                />
-              </div>
-              <span className="text-[10px] font-extrabold text-[#090D1A] block">
-                {isAr ? "تطبيق «كرمتي»" : "Karamty App"}
-              </span>
-              <span className="text-[7px] font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200/60 mt-0.5">
-                {isAr ? "منصة خدمة ومجتمع تفاعلية" : "EdTech & Service Platform"}
-              </span>
-            </div>
-
-            {/* In-App Live Metric Pill */}
-            <div className="bg-white border border-slate-200/90 px-2 py-1 rounded-lg shadow-xs flex items-center justify-between text-[7px]">
-              <span className="text-slate-600 font-medium">{isAr ? "نسبة التفاعل والحضور" : "Engagement"}</span>
-              <span className="text-emerald-600 font-bold font-mono">100% متكاملة</span>
-            </div>
+        {/* Full Size Prominent Karamty Logo - Takes Whole Area */}
+        <div className="relative z-10 w-full h-full flex items-center justify-center">
+          <div className="relative group-hover:scale-110 transition-transform duration-500">
+            <div className="absolute -inset-3 bg-gradient-to-r from-purple-500/30 to-[#1366FF]/30 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-500" />
+            <img
+              src="/images/karamty-logo.jpg"
+              alt="شعار تطبيق كرمتي الرسمي"
+              className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full border-4 border-white/90 shadow-[0_20px_50px_rgba(147,51,234,0.45)] object-contain bg-white"
+            />
           </div>
         </div>
       </div>
@@ -136,122 +96,44 @@ function CardVisualPreview({
 
   if (type === "inride") {
     return (
-      <div className="relative w-full h-full bg-gradient-to-br from-[#071924] via-[#09151F] to-[#0284C7]/60 flex items-center justify-center p-3 overflow-hidden select-none">
-        {/* Soft Ambient Glow */}
-        <div className="absolute inset-0 bg-sky-500/25 blur-[45px] rounded-full pointer-events-none" />
+      <div className="relative w-full h-full bg-gradient-to-br from-[#051329] via-[#091E3D] to-[#0284C7]/80 flex items-center justify-center p-6 sm:p-8 overflow-hidden select-none">
+        {/* Soft Ambient Brand Glows */}
+        <div className="absolute inset-0 bg-sky-500/20 blur-[50px] rounded-full pointer-events-none" />
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-600/25 blur-[40px] rounded-full pointer-events-none" />
+        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-cyan-400/20 blur-[40px] rounded-full pointer-events-none" />
 
-        {/* Realistic iPhone Mockup */}
-        <div className="relative w-[180px] sm:w-[200px] h-[220px] sm:h-[250px] rounded-[30px] bg-slate-900 border-[3px] border-slate-700/90 shadow-2xl p-1.5 flex flex-col justify-between overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
-          {/* Dynamic Island */}
-          <div className="bg-[#090D1A] pt-1 pb-1 px-3 flex justify-center items-center">
-            <div className="w-12 h-2.5 bg-slate-950 rounded-full flex items-center justify-end px-1">
-              <div className="w-1 h-1 rounded-full bg-emerald-500" />
-            </div>
-          </div>
-
-          {/* In-App Screen Content: inRide */}
-          <div className="bg-[#0B1522] rounded-[22px] flex-1 flex flex-col justify-between p-2.5 overflow-hidden text-white relative">
-            {/* Top Ride Header */}
-            <div className="bg-slate-900/90 border border-slate-800 p-1.5 sm:p-2 rounded-xl">
-              <div className="flex items-center justify-between text-[8px] font-bold text-sky-400">
-                <span className="flex items-center gap-1.5">
-                  <img
-                    src="/images/inride-logo.png"
-                    alt="إن رايد"
-                    className="w-3.5 h-3.5 rounded object-contain bg-white shrink-0 shadow-xs"
-                  />
-                  {isAr ? "إن رايد – تنقل ذكي" : "inRide Mobility"}
-                </span>
-                <span className="text-emerald-400 font-mono text-[7px] flex items-center gap-0.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  GPS Live
-                </span>
-              </div>
-            </div>
-
-            {/* Central Prominent inRide Logo & Status */}
-            <div className="my-auto py-1 flex flex-col items-center justify-center text-center">
-              <div className="relative group-hover:scale-110 transition-transform duration-300 mb-1.5">
-                <div className="absolute inset-0 bg-sky-500/25 blur-md rounded-2xl" />
-                <img
-                  src="/images/inride-logo.png"
-                  alt="لوجو تطبيق إن رايد"
-                  className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border border-sky-400/40 shadow-md object-contain bg-white mx-auto p-1"
-                />
-              </div>
-              <span className="text-[10px] font-extrabold text-white block">
-                {isAr ? "تطبيق «إن رايد»" : "inRide App"}
-              </span>
-              <span className="text-[7px] font-semibold text-sky-300 bg-sky-950/70 px-2 py-0.5 rounded-full border border-sky-500/30 mt-0.5 font-mono">
-                {isAr ? "نقل وتوصيل ذكي فوري" : "Mobility & Ride Hailing"}
-              </span>
-            </div>
-
-            {/* Ride Offer Card */}
-            <div className="bg-white/10 border border-white/10 px-2 py-1 rounded-lg flex items-center justify-between text-[7px]">
-              <span className="text-slate-300">{isAr ? "عرض السعر المقترح" : "Fare"}</span>
-              <span className="font-mono font-bold text-emerald-400 text-[8px]">45.00 {isAr ? "ر.س" : "SAR"}</span>
-            </div>
+        {/* Full Size Prominent inRide Logo - Takes Whole Area */}
+        <div className="relative z-10 w-full h-full flex items-center justify-center">
+          <div className="relative group-hover:scale-110 transition-transform duration-500">
+            <div className="absolute -inset-3 bg-gradient-to-r from-sky-500/30 to-blue-600/30 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition duration-500" />
+            <img
+              src="/images/inride-logo.png"
+              alt="شعار تطبيق إن رايد الرسمي"
+              className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-3xl border-4 border-white/90 shadow-[0_20px_50px_rgba(2,132,199,0.45)] object-contain bg-white p-3 sm:p-4"
+            />
           </div>
         </div>
       </div>
     );
   }
 
-  // Card 3: Next Project High-Converting Visual (Wireframe / Blueprint Launch)
+  // Card 3: 3D App Design Icon - Takes Whole Area Without Phone Frame
   return (
-    <div className="relative w-full h-full bg-gradient-to-br from-[#090D1A] via-[#0E1E42] to-[#1366FF] flex items-center justify-center p-3 overflow-hidden select-none">
+    <div className="relative w-full h-full bg-gradient-to-br from-[#090D1A] via-[#0E1E42] to-[#1366FF] flex items-center justify-center p-6 sm:p-8 overflow-hidden select-none">
       {/* Dynamic Radial Ambient Lights */}
-      <div className="absolute inset-0 bg-[#1366FF]/30 blur-[40px] rounded-full pointer-events-none" />
-      <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#00C6FF]/20 blur-[30px] rounded-full pointer-events-none" />
+      <div className="absolute inset-0 bg-[#1366FF]/30 blur-[45px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-[#00C6FF]/25 blur-[40px] rounded-full pointer-events-none" />
+      <div className="absolute -top-10 -right-10 w-44 h-44 bg-purple-500/20 blur-[40px] rounded-full pointer-events-none" />
 
-      {/* Futuristic Blueprint Glass Smartphone */}
-      <div className="relative w-[180px] sm:w-[200px] h-[220px] sm:h-[250px] rounded-[30px] bg-slate-900/90 border-[3px] border-blue-400/60 shadow-[0_20px_50px_rgba(19,102,255,0.35)] p-2 flex flex-col justify-between overflow-hidden transform group-hover:scale-105 transition-transform duration-500 backdrop-blur-md">
-        {/* Dynamic Island */}
-        <div className="pt-1 pb-1 px-3 flex justify-center items-center">
-          <div className="w-12 h-2.5 bg-blue-950/80 rounded-full border border-blue-500/30 flex items-center justify-end px-1">
-            <div className="w-1 h-1 rounded-full bg-cyan-400" />
-          </div>
-        </div>
-
-        {/* Blueprint Screen Content with 3D App Design Icon */}
-        <div className="rounded-[22px] border border-blue-400/30 bg-blue-950/60 p-2.5 flex-1 flex flex-col items-center justify-center text-center relative overflow-hidden">
-          {/* Subtle Ambient Radial Glow */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1366FF]/30 to-transparent pointer-events-none" />
-
-          {/* Prominent 3D App Design Icon */}
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20 mb-1.5 group-hover:scale-110 transition-transform duration-300">
-            <div className="absolute inset-0 bg-[#1366FF]/40 blur-lg rounded-2xl" />
-            <img
-              src="/images/app-design-3d.png"
-              alt="أيقونة تصميم وتطوير التطبيقات 3D"
-              className="relative w-full h-full object-contain rounded-2xl drop-shadow-[0_10px_20px_rgba(19,102,255,0.5)]"
-            />
-          </div>
-
-          <span className="text-[10px] font-black text-white block leading-tight">
-            {isAr ? "خدمة تصميم وتطوير التطبيقات" : "App Design & Engineering"}
-          </span>
-          <span className="text-[7px] text-cyan-300 mt-0.5 font-medium">
-            {isAr ? "Next Big Thing • جاهز للانطلاق" : "Ready to Code & Launch"}
-          </span>
-
-          <div className="flex items-center gap-1 mt-2">
-            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/25 text-cyan-300 text-[7px] font-mono border border-blue-400/30">
-              iOS
-            </span>
-            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/25 text-cyan-300 text-[7px] font-mono border border-blue-400/30">
-              Android
-            </span>
-            <span className="px-1.5 py-0.5 rounded-full bg-blue-500/25 text-cyan-300 text-[7px] font-mono border border-blue-400/30">
-              Flutter
-            </span>
-          </div>
-        </div>
-
-        {/* Bottom Status Pill */}
-        <div className="py-1 px-3 bg-white/10 rounded-xl text-center text-[7px] font-bold text-blue-200 mt-1 border border-white/10">
-          🚀 {isAr ? "جاهز للانطلاق والتوسع" : "Ready for Scale"}
+      {/* Full Size Prominent 3D App Design Icon */}
+      <div className="relative z-10 w-full h-full flex items-center justify-center">
+        <div className="relative group-hover:scale-110 transition-transform duration-500">
+          <div className="absolute -inset-4 bg-gradient-to-tr from-[#1366FF]/50 to-[#00C6FF]/40 rounded-3xl blur-2xl opacity-80 group-hover:opacity-100 transition duration-500" />
+          <img
+            src="/images/app-design-3d.png"
+            alt="أيقونة خدمة تصميم وتطوير التطبيقات 3D"
+            className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-52 md:h-52 object-contain rounded-3xl drop-shadow-[0_25px_60px_rgba(19,102,255,0.6)]"
+          />
         </div>
       </div>
     </div>
