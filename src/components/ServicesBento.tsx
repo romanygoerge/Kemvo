@@ -5,128 +5,41 @@ import { ArrowLeft, X, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/translations";
 
-// 1. High-End Custom 3D Vector Icon for UI/UX Design
+// 1. High-End 3D Icon for UI/UX Design (Zero Shadow)
 function UIUXServiceIcon() {
   return (
-    <div className="relative w-24 h-24 flex items-center justify-center">
-      {/* Background Ambient Glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 via-indigo-500/20 to-sky-400/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all" />
-      {/* Outer Squircle Container */}
-      <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-b from-white to-blue-50/80 border border-blue-200/90 shadow-subtle flex items-center justify-center group-hover:scale-105 group-hover:border-blue-400 transition-all duration-300">
-        <svg viewBox="0 0 64 64" width="48" height="48" fill="none">
-          <defs>
-            <linearGradient id="uiux_grad_1" x1="8" y1="12" x2="56" y2="52" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#1366FF" />
-              <stop offset="1" stopColor="#00C6FF" />
-            </linearGradient>
-            <linearGradient id="uiux_grad_2" x1="20" y1="20" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#252BFA" />
-              <stop offset="1" stopColor="#1366FF" />
-            </linearGradient>
-          </defs>
-          {/* Main App Canvas Window */}
-          <rect x="10" y="12" width="44" height="34" rx="8" fill="white" stroke="url(#uiux_grad_1)" strokeWidth="2.5" />
-          {/* Window Top Controls */}
-          <circle cx="16" cy="18" r="2" fill="#FF5F56" />
-          <circle cx="22" cy="18" r="2" fill="#FFBD2E" />
-          <circle cx="28" cy="18" r="2" fill="#27C93F" />
-          {/* Floating UI Components inside */}
-          <rect x="16" y="24" width="16" height="16" rx="4" fill="#EFF6FF" stroke="#BFDBFE" strokeWidth="1.5" />
-          <rect x="36" y="24" width="12" height="4" rx="2" fill="url(#uiux_grad_1)" />
-          <rect x="36" y="31" width="8" height="3" rx="1.5" fill="#94A3B8" />
-          <rect x="36" y="36" width="12" height="3" rx="1.5" fill="#CBD5E1" />
-          {/* Floating Figma Pen / Designer Cursor */}
-          <g filter="drop-shadow(0 4px 6px rgba(19, 102, 255, 0.35))">
-            <path
-              d="M38 34L48 48L42 50L38 46L34 52L31 50L35 44L30 42L38 34Z"
-              fill="url(#uiux_grad_2)"
-              stroke="white"
-              strokeWidth="1.5"
-            />
-          </g>
-        </svg>
-      </div>
+    <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-b from-white to-blue-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-blue-400 transition-all duration-300">
+      <img
+        src="/images/service-3d-uiux.png"
+        alt="تصميم واجهات وتجربة المستخدم 3D"
+        className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl"
+      />
     </div>
   );
 }
 
-// 2. High-End Custom 3D Vector Icon for Mobile Applications
+// 2. High-End 3D Icon for Mobile Applications (Zero Shadow)
 function MobileServiceIcon() {
   return (
-    <div className="relative w-24 h-24 flex items-center justify-center">
-      {/* Background Ambient Glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/20 via-blue-600/20 to-teal-400/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all" />
-      {/* Outer Squircle Container */}
-      <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-b from-white to-sky-50/80 border border-sky-200/90 shadow-subtle flex items-center justify-center group-hover:scale-105 group-hover:border-sky-400 transition-all duration-300">
-        <svg viewBox="0 0 64 64" width="48" height="48" fill="none">
-          <defs>
-            <linearGradient id="mob_grad_1" x1="18" y1="8" x2="46" y2="56" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#0284C7" />
-              <stop offset="1" stopColor="#00C6FF" />
-            </linearGradient>
-            <linearGradient id="mob_screen" x1="22" y1="16" x2="42" y2="48" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#0F172A" />
-              <stop offset="1" stopColor="#1E293B" />
-            </linearGradient>
-          </defs>
-          {/* Smartphone Body */}
-          <rect x="18" y="8" width="28" height="48" rx="7" fill="url(#mob_grad_1)" />
-          {/* Inner Display Screen */}
-          <rect x="20.5" y="10.5" width="23" height="43" rx="5" fill="url(#mob_screen)" />
-          {/* Dynamic Island */}
-          <rect x="28" y="12.5" width="8" height="2.5" rx="1.25" fill="#000" />
-          {/* Screen Content: Mini App Cards */}
-          <rect x="23" y="18" width="18" height="10" rx="2.5" fill="#1366FF" />
-          <rect x="25" y="21" width="8" height="2" rx="1" fill="#FFF" />
-          <rect x="25" y="24" width="5" height="1.5" rx="0.75" fill="#93C5FD" />
-          {/* Mini Sparkline Chart */}
-          <path d="M24 38L28 35L32 37L36 32L40 34" stroke="#38BDF8" strokeWidth="1.5" strokeLinecap="round" />
-          {/* Floating Star / 60 FPS Badge */}
-          <circle cx="44" cy="20" r="6" fill="#10B981" stroke="white" strokeWidth="1.5" />
-          <path d="M42 20L43.5 21.5L46.5 18.5" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </div>
+    <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-b from-white to-sky-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-sky-400 transition-all duration-300">
+      <img
+        src="/images/service-3d-mobile.png"
+        alt="تطوير تطبيقات الجوال 3D"
+        className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl"
+      />
     </div>
   );
 }
 
-// 3. High-End Custom 3D Vector Icon for Web Platforms
+// 3. High-End 3D Icon for Web Platforms (Zero Shadow)
 function WebServiceIcon() {
   return (
-    <div className="relative w-24 h-24 flex items-center justify-center">
-      {/* Background Ambient Glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 via-[#1366FF]/20 to-purple-400/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all" />
-      {/* Outer Squircle Container */}
-      <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-b from-white to-indigo-50/80 border border-indigo-200/90 shadow-subtle flex items-center justify-center group-hover:scale-105 group-hover:border-indigo-400 transition-all duration-300">
-        <svg viewBox="0 0 64 64" width="48" height="48" fill="none">
-          <defs>
-            <linearGradient id="web_grad_1" x1="10" y1="12" x2="54" y2="48" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#4F46E5" />
-              <stop offset="1" stopColor="#06B6D4" />
-            </linearGradient>
-            <linearGradient id="web_globe" x1="20" y1="20" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#6366F1" />
-              <stop offset="1" stopColor="#1366FF" />
-            </linearGradient>
-          </defs>
-          {/* Laptop / Browser Display Base */}
-          <rect x="12" y="14" width="40" height="28" rx="6" fill="white" stroke="url(#web_grad_1)" strokeWidth="2.5" />
-          <path d="M8 44C8 42.8954 8.89543 42 10 42H54C55.1046 42 56 42.8954 56 44V45C56 46.1046 55.1046 47 54 47H10C8.89543 47 8 46.1046 8 45V44Z" fill="#CBD5E1" />
-          <rect x="27" y="42" width="10" height="2" rx="1" fill="#94A3B8" />
-          {/* Browser Address Bar */}
-          <rect x="16" y="18" width="32" height="4" rx="2" fill="#F1F5F9" />
-          <circle cx="19" cy="20" r="1" fill="#94A3B8" />
-          {/* Orbiting Global Web Grid */}
-          <circle cx="32" cy="30" r="8" stroke="url(#web_globe)" strokeWidth="1.8" />
-          <ellipse cx="32" cy="30" rx="3.5" ry="8" stroke="url(#web_globe)" strokeWidth="1.4" />
-          <path d="M24 30H40" stroke="url(#web_globe)" strokeWidth="1.4" />
-          {/* Floating Fast Code Tag Badge */}
-          <g filter="drop-shadow(0 3px 5px rgba(79, 70, 229, 0.3))">
-            <rect x="38" y="28" width="16" height="12" rx="3" fill="#4F46E5" stroke="white" strokeWidth="1.2" />
-            <path d="M42 34L44 32M44 36L42 34M50 34L48 32M48 36L50 34" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
-          </g>
-        </svg>
-      </div>
+    <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-b from-white to-indigo-50/50 border border-slate-200/90 flex items-center justify-center group-hover:scale-105 group-hover:border-indigo-400 transition-all duration-300">
+      <img
+        src="/images/service-3d-web.png"
+        alt="تطوير المواقع والمنصات 3D"
+        className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl"
+      />
     </div>
   );
 }
