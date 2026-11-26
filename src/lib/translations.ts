@@ -13,18 +13,18 @@ export const translations = {
       language: "اللغة",
     },
     hero: {
-      headlinePrefix: "نصمّم تطبيقات تُعيد تعريف",
+      headlinePrefix: "نصمّم تطبيقات ومواقع إلكترونية تُعيد تعريف",
       headlineHighlight: "تجربة المستخدم",
       headlineSuffix: "وتصنع الفارق الحقيقي.",
       subtitle:
         "استوديو نخبوي يمزج بين دقة واجهات Apple وتطور منظومة الويب الحديثة بـ Next.js و Swift و Framer Motion لبناء منتجات رقمية رشيقة تلهم الملايين وتنمو بسرعة.",
       ctaPrimary: "احجز موعد استشارة استراتيجية",
-      metric1Value: "+120",
-      metric1Label: "تطبيق ومنصة تم إطلاقها",
+      metric1Value: "25+",
+      metric1Label: "تطبيق وموقع تم إطلاقه",
       metric2Value: "4.9 / 5.0",
       metric2Label: "متوسط تقييم العملاء",
-      metric3Value: "+45M",
-      metric3Label: "مستخدم متفاعل شهرياً",
+      metric3Value: "50K+",
+      metric3Label: "مستخدم عبر مشاريعنا",
       fpsBadge: "أداء 60 إطار / ثانية",
       zeroFrameDrops: "Zero Frame Drops",
       conversionRate: "معدل التحويل المحقق",
@@ -246,7 +246,7 @@ export const translations = {
     },
     reviews: {
       headline: "ماذا يقول مؤسسو الشركات عن العمل معنا؟",
-      ratingSummary: "4.9 / 5.0 (42 تقييم)",
+      ratingSummary: "4.9 / 5.0 (24 تقييم)",
       items: [
         {
           text: "فريق كيمفو رفع سقف التوقعات تماماً. أسلوبهم في تنفيذ واجهات تطبيقنا كان أشبه بمنتجات Apple العالمية. نال التطبيق إعجاب المستثمرين في أول عرض مباشر وحصلنا على جولة التمويل الأولى.",
@@ -341,18 +341,18 @@ export const translations = {
       language: "Language",
     },
     hero: {
-      headlinePrefix: "We engineer apps that redefine",
+      headlinePrefix: "We engineer apps and websites that redefine",
       headlineHighlight: "user experience",
       headlineSuffix: "and drive real impact.",
       subtitle:
         "An elite digital engineering studio merging Apple-grade craftsmanship with modern Next.js, Swift, and Flutter stacks to create agile products loved by millions.",
       ctaPrimary: "Book a Strategy Call",
-      metric1Value: "+120",
-      metric1Label: "Apps & Platforms Launched",
+      metric1Value: "25+",
+      metric1Label: "Apps & Websites Launched",
       metric2Value: "4.9 / 5.0",
       metric2Label: "Average Client Rating",
-      metric3Value: "+45M",
-      metric3Label: "Monthly Active Users",
+      metric3Value: "50K+",
+      metric3Label: "Users Across Our Products",
       fpsBadge: "60 FPS Fluid Motion",
       zeroFrameDrops: "Zero Frame Drops",
       conversionRate: "Conversion Rate Growth",
@@ -574,7 +574,7 @@ export const translations = {
     },
     reviews: {
       headline: "What founders say about working with us",
-      ratingSummary: "4.9 / 5.0 (42 Reviews)",
+      ratingSummary: "4.9 / 5.0 (24 Reviews)",
       items: [
         {
           text: "The Kemvo team completely exceeded our expectations. Their execution was indistinguishable from Apple-grade global software. Investors were blown away at our live demo and we secured our first seed round.",

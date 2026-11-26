@@ -47,7 +47,7 @@ export default function HeroSection() {
           {/* Key Metrics */}
           <div className="mt-6 sm:mt-10 pt-5 sm:pt-6 border-t border-slate-200/80 w-full max-w-2xl grid grid-cols-3 gap-2 sm:gap-4 text-center">
             <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#090D1A]">
+              <span dir="ltr" className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#090D1A]">
                 {t.metric1Value}
               </span>
               <span className="text-[10px] sm:text-xs md:text-sm text-[#525B75] mt-0.5 font-medium">
@@ -55,7 +55,7 @@ export default function HeroSection() {
               </span>
             </div>
             <div className="flex flex-col border-x border-slate-200/70">
-              <span className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#1366FF]">
+              <span dir="ltr" className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#1366FF]">
                 {t.metric2Value}
               </span>
               <span className="text-[10px] sm:text-xs md:text-sm text-[#525B75] mt-0.5 font-medium">
@@ -63,7 +63,7 @@ export default function HeroSection() {
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#090D1A]">
+              <span dir="ltr" className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#090D1A]">
                 {t.metric3Value}
               </span>
               <span className="text-[10px] sm:text-xs md:text-sm text-[#525B75] mt-0.5 font-medium">
