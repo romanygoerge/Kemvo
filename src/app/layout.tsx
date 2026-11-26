@@ -4,7 +4,7 @@ import { IBM_Plex_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import AttributionTracker from "@/components/AttributionTracker";
-import { SITE_URL } from "@/lib/siteConfig";
+import { SITE_URL, CONTACT_EMAIL } from "@/lib/siteConfig";
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
@@ -139,7 +139,7 @@ export default function RootLayout({
         "@type": "ContactPoint",
         telephone: "+201204062941",
         contactType: "customer service",
-        email: "hello@kemvo.studio",
+        email: CONTACT_EMAIL,
         areaServed: ["EG", "SA", "AE", "KW", "QA", "US", "GB"],
         availableLanguage: ["Arabic", "English"],
       },
@@ -172,7 +172,7 @@ export default function RootLayout({
     image: `${SITE_URL}/images/logo-full.png`,
     priceRange: "$$",
     telephone: "+201204062941",
-    email: "hello@kemvo.studio",
+    email: CONTACT_EMAIL,
     serviceArea: [
       "Egypt",
       "Saudi Arabia",

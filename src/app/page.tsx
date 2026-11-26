@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesBento from "@/components/ServicesBento";
@@ -11,10 +11,8 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import ShowreelModal from "@/components/ShowreelModal";
 
 export default function Home() {
-  const [showreelOpen, setShowreelOpen] = useState(false);
 
   const scrollToContact = () => {
     const el = document.getElementById("contact");
@@ -29,7 +27,7 @@ export default function Home() {
       <Navbar onOpenConsultation={scrollToContact} />
 
       {/* Hero Section */}
-      <HeroSection onOpenShowreel={() => setShowreelOpen(true)} />
+      <HeroSection />
 
       {/* Services Bento Grid */}
       <ServicesBento />
@@ -54,12 +52,6 @@ export default function Home() {
 
       {/* Minimalist Footer with Rich Internal Links */}
       <Footer />
-
-      {/* Showreel Interactive Modal */}
-      <ShowreelModal
-        isOpen={showreelOpen}
-        onClose={() => setShowreelOpen(false)}
-      />
     </main>
   );
 }

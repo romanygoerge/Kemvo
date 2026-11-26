@@ -1,15 +1,11 @@
 "use client";
 
 import React from "react";
-import { ArrowLeft, Play } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/translations";
 
-interface HeroSectionProps {
-  onOpenShowreel: () => void;
-}
-
-export default function HeroSection({ onOpenShowreel }: HeroSectionProps) {
+export default function HeroSection() {
   const { lang } = useLanguage();
   const t = translations[lang].hero;
 
@@ -37,8 +33,8 @@ export default function HeroSection({ onOpenShowreel }: HeroSectionProps) {
             {t.subtitle}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
+          {/* CTA Button */}
+          <div className="flex items-center justify-center w-full sm:w-auto px-4 sm:px-0">
             <a
               href="#contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#1366FF] to-[#252BFA] hover:from-[#0052E0] hover:to-[#1A20EA] text-white font-semibold text-sm sm:text-base transition-all duration-300 shadow-glow-sm hover:shadow-glow transform hover:-translate-y-0.5 active:scale-95 group text-center"
@@ -46,16 +42,6 @@ export default function HeroSection({ onOpenShowreel }: HeroSectionProps) {
               <span>{t.ctaPrimary}</span>
               <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-x-1 ltr:rotate-180 ltr:group-hover:translate-x-1" />
             </a>
-
-            <button
-              onClick={onOpenShowreel}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-5 sm:px-7 py-3.5 sm:py-4 rounded-full bg-white/90 hover:bg-white text-[#090D1A] font-semibold text-sm sm:text-base border border-slate-200 shadow-subtle hover:shadow-apple transition-all duration-200 group text-center"
-            >
-              <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-blue-50 text-[#1366FF] flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" />
-              </span>
-              <span>{t.ctaSecondary}</span>
-            </button>
           </div>
 
           {/* Key Metrics */}

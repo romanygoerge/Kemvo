@@ -5,3 +5,6 @@
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.kemvo.online"
 ).replace(/\/+$/, "");
+
+/** Public contact email address displayed in the footer and structured metadata. */
+export const CONTACT_EMAIL = "romanygoerge46@gmail.com";

@@ -19,7 +19,6 @@ export const translations = {
       subtitle:
         "استوديو نخبوي يمزج بين دقة واجهات Apple وتطور منظومة الويب الحديثة بـ Next.js و Swift و Framer Motion لبناء منتجات رقمية رشيقة تلهم الملايين وتنمو بسرعة.",
       ctaPrimary: "احجز موعد استشارة استراتيجية",
-      ctaSecondary: "شاهد شووريل الاستوديو",
       metric1Value: "+120",
       metric1Label: "تطبيق ومنصة تم إطلاقها",
       metric2Value: "4.9 / 5.0",
@@ -327,11 +326,6 @@ export const translations = {
       terms: "شروط الخدمة",
       designedWith: "Designed with Precision & Care",
     },
-    showreel: {
-      badge: "KEMVO STUDIO SHOWREEL 2025",
-      headline: "ملامح من دقة التصميم وتجربة المستخدم الاستثنائية",
-      subtitle: "استعراض حي لأكثر من 120 شاشة ونظام تفاعلي",
-    },
   },
   en: {
     navbar: {
@@ -353,7 +347,6 @@ export const translations = {
       subtitle:
         "An elite digital engineering studio merging Apple-grade craftsmanship with modern Next.js, Swift, and Flutter stacks to create agile products loved by millions.",
       ctaPrimary: "Book a Strategy Call",
-      ctaSecondary: "Watch Studio Showreel",
       metric1Value: "+120",
       metric1Label: "Apps & Platforms Launched",
       metric2Value: "4.9 / 5.0",
@@ -660,11 +653,6 @@ export const translations = {
       privacy: "Privacy Policy",
       terms: "Terms of Service",
       designedWith: "Designed with Precision & Care",
-    },
-    showreel: {
-      badge: "KEMVO STUDIO SHOWREEL 2025",
-      headline: "Craftsmanship, Precision & Fluid Motion Showcase",
-      subtitle: "Live preview of over 120 interactive production screens",
     },
   },
 };

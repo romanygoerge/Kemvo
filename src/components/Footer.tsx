@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Terminal, Mail, Globe, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/translations";
+import { CONTACT_EMAIL } from "@/lib/siteConfig";
 
 // WhatsApp Official SVG Icon
 function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -57,7 +58,7 @@ export default function Footer() {
                 <WhatsAppIcon className="w-4 h-4" />
               </a>
               <a
-                href="mailto:hello@kemvo.studio"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="w-9 h-9 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-[#1366FF] flex items-center justify-center text-slate-600 transition-colors"
                 aria-label="Email"
               >
@@ -170,7 +171,7 @@ export default function Footer() {
             </a>
             <div className="flex items-center gap-2 text-xs sm:text-sm text-[#525B75]">
               <Mail className="w-4 h-4 text-[#1366FF] shrink-0" />
-              <span className="font-mono">hello@kemvo.studio</span>
+              <span className="font-mono">{CONTACT_EMAIL}</span>
             </div>
             <div className="flex items-center gap-2 text-xs text-[#525B75]">
               <MapPin className="w-4 h-4 text-slate-400 shrink-0" />

@@ -22,7 +22,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { servicesData, ServiceDetailData } from "@/lib/servicesData";
-import { SITE_URL } from "@/lib/siteConfig";
+import { SITE_URL, CONTACT_EMAIL } from "@/lib/siteConfig";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -108,7 +108,7 @@ export default async function ServicePage({ params }: PageProps) {
       url: baseUrl,
       logo: `${baseUrl}/images/logo-full.png`,
       telephone: "+201204062941",
-      email: "hello@kemvo.studio",
+      email: CONTACT_EMAIL,
     },
     serviceType: service.titleEn,
     areaServed: ["Egypt", "Saudi Arabia", "United Arab Emirates", "GCC", "Worldwide"],
