@@ -1,19 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
+  AlertCircle,
   ArrowLeft,
   CheckCircle2,
-  ShieldCheck,
   Clock,
-  Sparkles,
-  PhoneCall,
   ExternalLink,
+  Loader2,
+  RotateCcw,
+  ShieldCheck,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import {
+  BUDGET_OPTIONS,
+  getBudgetLabel,
+  resolveServiceBySlug,
+  resolveSlugByLabel,
+  SERVICE_OPTIONS,
+} from "@/lib/leads/services";
+import {
+  buildLeadWhatsAppUrl,
+  formatInternationalPhone,
+} from "@/lib/leads/validation";
+import { getAttributionData } from "@/lib/tracking/attribution";
 import { translations } from "@/lib/translations";
 
-// WhatsApp Official SVG Icon
 function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg
@@ -30,21 +42,70 @@ function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+function generateIdempotencyKey(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `kmv_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`;
+}
+
 export default function ContactSection() {
   const { lang } = useLanguage();
   const t = translations[lang].contact;
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [savedRefCode, setSavedRefCode] = useState<string>("");
   const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState("");
+
+  const idempotencyKeyRef = useRef<string | null>(null);
 
   const [formData, setFormData] = useState({
     name: "",
     countryCode: "+20",
     phone: "",
     email: "",
-    projectType: t.projectTypeOptions[0],
+    projectType: translations.ar.contact.projectTypeOptions[0],
+    budget: "",
     notes: "",
+    website: "", // Honeypot trap
   });
+
+  // Preselect service from ?service= query parameter and keep label synced with language toggle
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const serviceSlug = params.get("service");
+    const matched = resolveServiceBySlug(serviceSlug);
+    if (matched) {
+      setFormData((prev) => ({
+        ...prev,
+        projectType: lang === "ar" ? matched.labelAr : matched.labelEn,
+      }));
+    }
+  }, [lang]);
+
+  // Sync selected projectType label if user switches language without choosing a custom string
+  useEffect(() => {
+    const slug = resolveSlugByLabel(formData.projectType);
+    if (!slug) return;
+    const svc = SERVICE_OPTIONS.find((s) => s.slug === slug);
+    if (!svc) return;
+    const targetLabel = lang === "ar" ? svc.labelAr : svc.labelEn;
+    if (targetLabel !== formData.projectType) {
+      setFormData((prev) => ({ ...prev, projectType: targetLabel }));
+    }
+  }, [lang, formData.projectType]);
+
+  const updateField = <K extends keyof typeof formData>(
+    key: K,
+    value: (typeof formData)[K]
+  ) => {
+    idempotencyKeyRef.current = null;
+    if (errorMessage) setErrorMessage(null);
+    setFormData((prev) => ({ ...prev, [key]: value }));
+  };
 
   const countryCodes = [
     { code: "+20", label: lang === "ar" ? "مصر (+20)" : "Egypt (+20)" },
@@ -62,49 +123,165 @@ export default function ContactSection() {
     { code: "+", label: lang === "ar" ? "دولة أخرى (+)" : "Other Country (+)" },
   ];
 
+  const submitLead = async () => {
+    if (isSubmitting) return;
+    setErrorMessage(null);
+
+    const trimmedName = formData.name.trim();
+    if (trimmedName.length < 2) {
+      setErrorMessage(
+        lang === "ar"
+          ? "يرجى إدخال الاسم الكامل (حرفين على الأقل)."
+          : "Please enter your full name (at least 2 characters)."
+      );
+      return;
+    }
+
+    const phoneCheck = formatInternationalPhone(
+      formData.countryCode,
+      formData.phone
+    );
+    if (!phoneCheck.valid) {
+      setErrorMessage(
+        lang === "ar"
+          ? "يرجى إدخال رقم واتساب صحيح متضمناً الأرقام بشكل مكتمل."
+          : "Please enter a valid WhatsApp phone number."
+      );
+      return;
+    }
+
+    const trimmedEmail = formData.email.trim();
+    if (trimmedEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+      setErrorMessage(
+        lang === "ar"
+          ? "صيغة البريد الإلكتروني غير صحيحة."
+          : "Please enter a valid email address."
+      );
+      return;
+    }
+
+    if (!idempotencyKeyRef.current) {
+      idempotencyKeyRef.current = generateIdempotencyKey();
+    }
+
+    const attribution = getAttributionData();
+    const serviceSlug = resolveSlugByLabel(formData.projectType);
+    const budgetText = formData.budget
+      ? getBudgetLabel(formData.budget, lang)
+      : null;
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: trimmedName,
+          countryCode: formData.countryCode,
+          phone: formData.phone.trim(),
+          email: trimmedEmail || null,
+          serviceType: formData.projectType,
+          serviceSlug,
+          projectDescription: formData.notes.trim() || null,
+          budget: formData.budget || null,
+          locale: lang,
+          source: attribution.source,
+          landingPage: attribution.landingPage,
+          referrer: attribution.referrer,
+          utmSource: attribution.utmSource,
+          utmMedium: attribution.utmMedium,
+          utmCampaign: attribution.utmCampaign,
+          utmContent: attribution.utmContent,
+          utmTerm: attribution.utmTerm,
+          fbclid: attribution.fbclid,
+          fbp: attribution.fbp,
+          fbc: attribution.fbc,
+          idempotencyKey: idempotencyKeyRef.current,
+          website: formData.website,
+        }),
+      });
+
+      const payload = await response.json().catch(() => null);
+
+      if (!response.ok || !payload?.success || !payload?.lead?.ref_code) {
+        setErrorMessage(
+          payload?.error ||
+            (lang === "ar"
+              ? "تعذر حفظ طلبك حالياً. يرجى المحاولة مرة أخرى."
+              : "Could not save your request right now. Please try again.")
+        );
+        return;
+      }
+
+      const refCode = String(payload.lead.ref_code);
+      const whatsappUrl = buildLeadWhatsAppUrl({
+        lang,
+        refCode,
+        name: trimmedName,
+        phone: phoneCheck.formatted,
+        email: trimmedEmail || null,
+        serviceType: formData.projectType,
+        budgetLabel: budgetText,
+        projectDescription: formData.notes.trim() || null,
+      });
+
+      // Emit internal hook only after verified DB persistence (ready for future Meta Pixel/CAPI)
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new CustomEvent("kemvo:lead_saved", {
+            detail: {
+              leadId: payload.lead.id,
+              refCode,
+              serviceType: formData.projectType,
+              serviceSlug,
+              budget: formData.budget || null,
+              source: attribution.source,
+            },
+          })
+        );
+      }
+
+      setSavedRefCode(refCode);
+      setLastWhatsAppUrl(whatsappUrl);
+      setSubmitted(true);
+
+      // Open WhatsApp ONLY after successful persistence
+      if (typeof window !== "undefined") {
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      }
+    } catch {
+      setErrorMessage(
+        lang === "ar"
+          ? "تعذر الاتصال بالخادم لحفظ طلبك. تأكد من اتصالك بالإنترنت وحاول مجدداً."
+          : "Network error while saving your request. Please check your connection and try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    void submitLead();
+  };
 
-    // Target Studio WhatsApp Number (in international format without +)
-    const targetWhatsApp = "201204062941";
-
-    const cleanPhone = formData.phone.trim().replace(/^0+/, "");
-    const fullPhone = `${formData.countryCode} ${cleanPhone}`;
-
-    // Multilingual WhatsApp message
-    const message =
-      lang === "ar"
-        ? `*طلب استشارة وبدء مشروع جديد - Kemvo Studio* 🚀
-━━━━━━━━━━━━━━━━━━━━━━
-👤 *الاسم الكامل:* ${formData.name.trim()}
-📱 *رقم الواتساب للتواصل:* ${fullPhone}
-📧 *البريد الإلكتروني:* ${formData.email.trim() || "لم يُحدد"}
-💼 *نوع المشروع:* ${formData.projectType}
-📝 *نبذة عن تفاصيل المشروع:*
-${formData.notes.trim() || "سيتم مناقشتها تفصيلياً خلال المكالمة الاستشارية."}
-━━━━━━━━━━━━━━━━━━━━━━
-أرجو تأكيد موعد الاستشارة ومناقشة تفاصيل التنفيذ. شكراً لكم!`
-        : `*Project Inquiry & Consultation Request - Kemvo Studio* 🚀
-━━━━━━━━━━━━━━━━━━━━━━
-👤 *Full Name:* ${formData.name.trim()}
-📱 *WhatsApp Phone:* ${fullPhone}
-📧 *Email:* ${formData.email.trim() || "Not specified"}
-💼 *Project Type:* ${formData.projectType}
-📝 *Project Overview:*
-${formData.notes.trim() || "To be discussed during the consultation call."}
-━━━━━━━━━━━━━━━━━━━━━━
-Please confirm our consultation schedule and details. Thank you!`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${targetWhatsApp}?text=${encodedMessage}`;
-
-    setLastWhatsAppUrl(whatsappUrl);
-    setSubmitted(true);
-
-    // Automatically trigger WhatsApp in a new tab
-    if (typeof window !== "undefined") {
-      window.open(whatsappUrl, "_blank");
-    }
+  const handleReset = () => {
+    idempotencyKeyRef.current = null;
+    setSubmitted(false);
+    setErrorMessage(null);
+    setSavedRefCode("");
+    setFormData((prev) => ({
+      ...prev,
+      name: "",
+      phone: "",
+      email: "",
+      budget: "",
+      notes: "",
+      website: "",
+    }));
   };
 
   return (
@@ -121,7 +298,11 @@ Please confirm our consultation schedule and details. Thank you!`;
             <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold backdrop-blur-md w-fit border border-emerald-500/30">
                 <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-                <span>{lang === "ar" ? "تواصل فوري ومباشر عبر واتساب" : "Direct & Instant WhatsApp Chat"}</span>
+                <span>
+                  {lang === "ar"
+                    ? "تواصل فوري ومباشر عبر واتساب"
+                    : "Direct & Instant WhatsApp Chat"}
+                </span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
@@ -159,9 +340,7 @@ Please confirm our consultation schedule and details. Thank you!`;
                   <span>+20 120 406 2941</span>
                   <ExternalLink className="w-3 h-3 text-emerald-400 ml-1" />
                 </a>
-                <span className="text-xs text-slate-400">
-                  {t.whatsappPill}
-                </span>
+                <span className="text-xs text-slate-400">{t.whatsappPill}</span>
               </div>
             </div>
 
@@ -175,6 +354,11 @@ Please confirm our consultation schedule and details. Thank you!`;
                   <h3 className="text-xl sm:text-2xl font-bold text-[#090D1A]">
                     {t.successTitle}
                   </h3>
+                  {savedRefCode && (
+                    <div className="px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#1366FF] text-xs font-bold font-mono">
+                      {t.refLabel} {savedRefCode}
+                    </div>
+                  )}
                   <p className="text-xs sm:text-sm text-[#525B75] max-w-sm leading-relaxed">
                     {t.successDesc}
                   </p>
@@ -190,8 +374,9 @@ Please confirm our consultation schedule and details. Thank you!`;
                   </a>
 
                   <button
-                    onClick={() => setSubmitted(false)}
-                    className="mt-2 text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+                    type="button"
+                    onClick={handleReset}
+                    className="mt-2 text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
                   >
                     {t.editData}
                   </button>
@@ -211,7 +396,46 @@ Please confirm our consultation schedule and details. Thank you!`;
                     {t.formSub}
                   </p>
 
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-3.5">
+                  {errorMessage && (
+                    <div
+                      role="alert"
+                      className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex flex-col gap-2"
+                    >
+                      <div className="flex items-start gap-2 font-semibold">
+                        <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                        <span>{errorMessage}</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => void submitLead()}
+                        disabled={isSubmitting}
+                        className="self-start inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-bold text-[11px] transition-colors cursor-pointer disabled:opacity-60"
+                      >
+                        <RotateCcw className="w-3 h-3" />
+                        <span>{t.retryButton}</span>
+                      </button>
+                    </div>
+                  )}
+
+                  <form
+                    onSubmit={handleSubmit}
+                    noValidate
+                    className="flex flex-col gap-3 sm:gap-3.5"
+                  >
+                    {/* Hidden Honeypot Anti-Spam Input */}
+                    <div className="hidden" aria-hidden="true">
+                      <label htmlFor="kemvo-website-hp">Website</label>
+                      <input
+                        id="kemvo-website-hp"
+                        name="website"
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={formData.website}
+                        onChange={(e) => updateField("website", e.target.value)}
+                      />
+                    </div>
+
                     {/* Full Name */}
                     <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1">
@@ -220,10 +444,10 @@ Please confirm our consultation schedule and details. Thank you!`;
                       <input
                         type="text"
                         required
+                        minLength={2}
+                        maxLength={120}
                         value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
+                        onChange={(e) => updateField("name", e.target.value)}
                         placeholder={t.namePlaceholder}
                         className="w-full text-base sm:text-sm px-3.5 sm:px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
                       />
@@ -238,7 +462,7 @@ Please confirm our consultation schedule and details. Thank you!`;
                         <select
                           value={formData.countryCode}
                           onChange={(e) =>
-                            setFormData({ ...formData, countryCode: e.target.value })
+                            updateField("countryCode", e.target.value)
                           }
                           className="w-32 sm:w-36 shrink-0 text-xs px-2 sm:px-2.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono text-slate-700 font-semibold"
                         >
@@ -252,9 +476,7 @@ Please confirm our consultation schedule and details. Thank you!`;
                           type="tel"
                           required
                           value={formData.phone}
-                          onChange={(e) =>
-                            setFormData({ ...formData, phone: e.target.value })
-                          }
+                          onChange={(e) => updateField("phone", e.target.value)}
                           placeholder={t.phonePlaceholder}
                           className="flex-1 min-w-0 text-base sm:text-sm px-3.5 sm:px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono transition-all text-left"
                           dir="ltr"
@@ -273,9 +495,7 @@ Please confirm our consultation schedule and details. Thank you!`;
                       <input
                         type="email"
                         value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
+                        onChange={(e) => updateField("email", e.target.value)}
                         placeholder={t.emailPlaceholder}
                         className="w-full text-base sm:text-sm px-3.5 sm:px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono transition-all text-left"
                         dir="ltr"
@@ -285,18 +505,41 @@ Please confirm our consultation schedule and details. Thank you!`;
                     {/* Project Type */}
                     <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1">
-                        {t.projectTypeLabel} <span className="text-rose-500">*</span>
+                        {t.projectTypeLabel}{" "}
+                        <span className="text-rose-500">*</span>
                       </label>
                       <select
                         value={formData.projectType}
                         onChange={(e) =>
-                          setFormData({ ...formData, projectType: e.target.value })
+                          updateField("projectType", e.target.value)
                         }
                         className="w-full text-xs sm:text-sm px-3 sm:px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-slate-700 font-medium"
                       >
                         {t.projectTypeOptions.map((opt) => (
                           <option key={opt} value={opt}>
                             {opt}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* Estimated Budget (Optional) */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                        {t.budgetLabel}{" "}
+                        <span className="text-slate-400 font-normal">
+                          {t.budgetOptional}
+                        </span>
+                      </label>
+                      <select
+                        value={formData.budget}
+                        onChange={(e) => updateField("budget", e.target.value)}
+                        className="w-full text-xs sm:text-sm px-3 sm:px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-slate-700 font-medium"
+                      >
+                        <option value="">{t.budgetPlaceholder}</option>
+                        {BUDGET_OPTIONS.map((b) => (
+                          <option key={b.value} value={b.value}>
+                            {lang === "ar" ? b.labelAr : b.labelEn}
                           </option>
                         ))}
                       </select>
@@ -312,23 +555,32 @@ Please confirm our consultation schedule and details. Thank you!`;
                       </label>
                       <textarea
                         rows={2}
+                        maxLength={4000}
                         value={formData.notes}
-                        onChange={(e) =>
-                          setFormData({ ...formData, notes: e.target.value })
-                        }
+                        onChange={(e) => updateField("notes", e.target.value)}
                         placeholder={t.notesPlaceholder}
                         className="w-full text-base sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all resize-none"
                       />
                     </div>
 
-                    {/* Submit via WhatsApp Button */}
+                    {/* Submit via API + WhatsApp Button */}
                     <button
                       type="submit"
-                      className="w-full mt-1.5 py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-600 via-[#25D366] to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2.5 group active:scale-98"
+                      disabled={isSubmitting}
+                      className="w-full mt-1.5 py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-600 via-[#25D366] to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2.5 group active:scale-98 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
                     >
-                      <WhatsAppIcon className="w-5 h-5 text-white" />
-                      <span>{t.submitButton}</span>
-                      <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin text-white" />
+                          <span>{t.submittingButton}</span>
+                        </>
+                      ) : (
+                        <>
+                          <WhatsAppIcon className="w-5 h-5 text-white" />
+                          <span>{t.submitButton}</span>
+                          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1 ltr:rotate-180 ltr:group-hover:translate-x-1" />
+                        </>
+                      )}
                     </button>
                   </form>
                 </>

@@ -227,7 +227,7 @@ export default async function ServicePage({ params }: PageProps) {
           {/* CTAs */}
           <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mb-10">
             <Link
-              href="/#contact"
+              href={`/?service=${service.slug}#contact`}
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#1366FF] to-[#252BFA] hover:from-[#0052E0] hover:to-[#1A20EA] text-white font-semibold text-sm sm:text-base shadow-glow-sm hover:shadow-glow transition-all duration-300"
             >
               <span>ناقش متطلبات مشروعك معنا</span>
@@ -407,7 +407,7 @@ export default async function ServicePage({ params }: PageProps) {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
-                href="/#contact"
+                href={`/?service=${service.slug}#contact`}
                 className="px-7 py-3 rounded-full bg-white text-[#090D1A] hover:bg-slate-100 font-bold text-sm shadow-apple transition-all"
               >
                 طلب استشارة وعرض سعر

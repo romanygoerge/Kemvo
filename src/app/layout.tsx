@@ -3,6 +3,7 @@ import Script from "next/script";
 import { IBM_Plex_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import AttributionTracker from "@/components/AttributionTracker";
 import { SITE_URL } from "@/lib/siteConfig";
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
@@ -267,7 +268,10 @@ export default function RootLayout({
         )}
       </head>
       <body className="min-h-screen bg-[#FAFCFF] text-[#090D1A] antialiased selection:bg-[#1366FF] selection:text-white">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <AttributionTracker />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -98,7 +98,7 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
 
           {/* Primary CTA Button */}
           <a
-            href="#contact"
+            href="/#contact"
             onClick={onOpenConsultation}
             className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#1366FF] to-[#252BFA] hover:from-[#0052E0] hover:to-[#1A20EA] text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-glow-sm hover:shadow-glow active:scale-95 group shrink-0"
           >

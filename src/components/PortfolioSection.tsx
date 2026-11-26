@@ -427,7 +427,7 @@ export default function PortfolioSection() {
                 )}
 
                 <a
-                  href="#contact"
+                  href="/?service=mobile-app-development#contact"
                   onClick={() => setSelectedCase(null)}
                   className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-gradient-to-r from-[#1366FF] to-[#252BFA] text-white text-xs font-bold hover:shadow-glow-sm transition-all text-center"
                 >

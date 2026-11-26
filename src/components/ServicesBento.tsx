@@ -111,7 +111,13 @@ export default function ServicesBento() {
                   </button>
 
                   <a
-                    href="#contact"
+                    href={`/?service=${
+                      service.id === "uiux"
+                        ? "ui-ux-design"
+                        : service.id === "mobile"
+                        ? "mobile-app-development"
+                        : "web-development"
+                    }#contact`}
                     className="text-xs font-bold text-slate-500 hover:text-[#1366FF] transition-colors"
                   >
                     {t.requestDirectly}
@@ -186,7 +192,13 @@ export default function ServicesBento() {
 
             <div className="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
               <a
-                href="#contact"
+                href={`/?service=${
+                  selectedService.id === "uiux"
+                    ? "ui-ux-design"
+                    : selectedService.id === "mobile"
+                    ? "mobile-app-development"
+                    : "web-development"
+                }#contact`}
                 onClick={() => setSelectedService(null)}
                 className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-[#1366FF] to-[#252BFA] text-white text-xs font-bold hover:shadow-glow-sm transition-all text-center"
               >
