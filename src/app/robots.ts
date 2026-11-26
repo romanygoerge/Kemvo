@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/siteConfig";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://kemvo.vercel.app";
+  const baseUrl = SITE_URL;
 
   return {
     rules: [
@@ -20,3 +21,4 @@ export default function robots(): MetadataRoute.Robots {
     host: baseUrl,
   };
 }
+

@@ -3,6 +3,7 @@ import Script from "next/script";
 import { IBM_Plex_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { SITE_URL } from "@/lib/siteConfig";
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
@@ -25,7 +26,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kemvo.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Kemvo Studio | شركة تصميم وتطوير تطبيقات ومواقع إلكترونية",
     template: "%s | Kemvo Studio",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     "Kemvo Studio",
     "كيمفو ستوديو",
   ],
-  authors: [{ name: "Kemvo Studio", url: "https://kemvo.vercel.app" }],
+  authors: [{ name: "Kemvo Studio", url: SITE_URL }],
   creator: "Kemvo Studio",
   publisher: "Kemvo Studio",
   formatDetection: {
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ar_EG",
     alternateLocale: ["en_US", "ar_SA", "ar_AE"],
-    url: "https://kemvo.vercel.app",
+    url: SITE_URL,
     siteName: "Kemvo Studio",
     title: "Kemvo Studio | شركة تصميم وتطوير تطبيقات ومواقع إلكترونية",
     description:
@@ -124,12 +125,12 @@ export default function RootLayout({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://kemvo.vercel.app/#organization",
+    "@id": `${SITE_URL}/#organization`,
     name: "Kemvo Studio",
     alternateName: ["كيمفو ستوديو", "كيمفو", "Kemvo"],
-    url: "https://kemvo.vercel.app",
-    logo: "https://kemvo.vercel.app/images/logo-full.png",
-    image: "https://kemvo.vercel.app/images/logo-full.png",
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo-full.png`,
+    image: `${SITE_URL}/images/logo-full.png`,
     description:
       "استوديو هندسة وتصميم المنتجات الرقمية، متخصص في تطوير تطبيقات الجوال Android و iOS ومنصات الويب السحابية وتصميم UI/UX.",
     contactPoint: [
@@ -151,11 +152,11 @@ export default function RootLayout({
   const webSiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://kemvo.vercel.app/#website",
-    url: "https://kemvo.vercel.app",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
     name: "Kemvo Studio",
     publisher: {
-      "@id": "https://kemvo.vercel.app/#organization",
+      "@id": `${SITE_URL}/#organization`,
     },
     inLanguage: ["ar", "en"],
   };
@@ -163,11 +164,11 @@ export default function RootLayout({
   const professionalServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://kemvo.vercel.app/#service",
+    "@id": `${SITE_URL}/#service`,
     name: "Kemvo Studio",
-    url: "https://kemvo.vercel.app",
-    logo: "https://kemvo.vercel.app/images/logo-full.png",
-    image: "https://kemvo.vercel.app/images/logo-full.png",
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo-full.png`,
+    image: `${SITE_URL}/images/logo-full.png`,
     priceRange: "$$",
     telephone: "+201204062941",
     email: "hello@kemvo.studio",

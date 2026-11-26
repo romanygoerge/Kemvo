@@ -22,6 +22,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { servicesData, ServiceDetailData } from "@/lib/servicesData";
+import { SITE_URL } from "@/lib/siteConfig";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const baseUrl = "https://kemvo.vercel.app";
+  const baseUrl = SITE_URL;
   const canonicalUrl = `${baseUrl}/services/${slug}`;
 
   return {
@@ -89,7 +90,7 @@ export default async function ServicePage({ params }: PageProps) {
     notFound();
   }
 
-  const baseUrl = "https://kemvo.vercel.app";
+  const baseUrl = SITE_URL;
   const pageUrl = `${baseUrl}/services/${slug}`;
 
   // 1. Service Schema
@@ -428,3 +429,4 @@ export default async function ServicePage({ params }: PageProps) {
     </main>
   );
 }
+
