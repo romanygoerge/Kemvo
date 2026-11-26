@@ -4,6 +4,7 @@ import { IBM_Plex_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import AttributionTracker from "@/components/AttributionTracker";
+import MetaPixel from "@/components/MetaPixel";
 import { SITE_URL, CONTACT_EMAIL } from "@/lib/siteConfig";
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
@@ -270,6 +271,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-[#FAFCFF] text-[#090D1A] antialiased selection:bg-[#1366FF] selection:text-white">
         <LanguageProvider>
           <AttributionTracker />
+          <MetaPixel />
           {children}
         </LanguageProvider>
       </body>

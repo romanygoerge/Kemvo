@@ -239,6 +239,7 @@ export default function ContactSection() {
               serviceSlug,
               budget: formData.budget || null,
               source: attribution.source,
+              isDuplicate: Boolean(payload.duplicate),
             },
           })
         );
@@ -367,6 +368,7 @@ export default function ContactSection() {
                     href={lastWhatsAppUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-skip-pixel-contact="true"
                     className="w-full py-3 sm:py-3.5 px-6 rounded-xl bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2"
                   >
                     <WhatsAppIcon className="w-5 h-5" />
